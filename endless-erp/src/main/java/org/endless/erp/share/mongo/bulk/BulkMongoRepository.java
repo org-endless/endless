@@ -9,11 +9,13 @@ import java.util.List;
 /**
  * BulkMongoRepository
  *
+ * <p>create 2023/05/24 17:48
+ *
  * @author Deng Haozhi
- * @date 2023/4/8 16:31
- * @since 0.0.2
+ * @since 0.0.3
  */
 public interface BulkMongoRepository {
+
 
     void upsert(List<Pair<Query, Update>> upsertList, Class<?> entityClass);
 
