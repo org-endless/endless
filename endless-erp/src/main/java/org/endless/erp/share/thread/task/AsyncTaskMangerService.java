@@ -1,6 +1,10 @@
 package org.endless.erp.share.thread.task;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
+
+
 
 /**
  * AsyncTaskMangerService
@@ -12,7 +16,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class AsyncTaskMangerService {
 
-    public void upsert(AsyncTaskManager.Status status) {
+    private final MongoTemplate mongoTemplate;
 
+    private final AsyncTaskMangerJpaRepository asyncTaskMangerJpaRepository;
+
+    public AsyncTaskMangerService(MongoTemplate mongoTemplate, AsyncTaskMangerJpaRepository asyncTaskMangerJpaRepository) {
+        this.mongoTemplate = mongoTemplate;
+        this.asyncTaskMangerJpaRepository = asyncTaskMangerJpaRepository;
+    }
+
+    public void upsert(String taskId, AsyncTaskManager.Status status) {
+
+        Query query = Query.query()
+        var task = asyncTaskMangerJpaRepository.findById(taskId);
+
+        if (task.isPresent()) {
+
+        }
+
+
+
+
+
+
+        mongoTemplate.upsert();
     }
 }
