@@ -1,0 +1,19 @@
+<!--测试页面-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EVE Test</title>
+</head>
+<body>
+<h1>test</h1>
+<div th:text="${msg}"></div>
+<div th:utext="${msg}"></div>
+
+<hr>
+
+<h3 th:each="each:${eachs}">[[ ${each} ]]</h3>
+<h3 th:each="each:${eachs}" th:text="${each}"></h3>
+
+</body>
+</html>

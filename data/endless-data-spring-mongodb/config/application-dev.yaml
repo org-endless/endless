@@ -1,0 +1,13 @@
+server:
+  port: 80
+
+spring:
+  data:
+    mongodb:
+      #uri: mongodb://1.15.236.69:27017/endless-erp
+      host: "1.15.236.69"
+      port: "27017"
+      database: "endless-erp"
+      username: "admin"
+      password: "123456"
+      max-size: 200

@@ -1,0 +1,125 @@
+{
+  "groups": [
+    {
+      "name": "spring.task.base-thread-pool",
+      "type": "org.endless.erp.share.thread.base.BaseThreadPoolProperties",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool",
+      "type": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.task.base-thread-pool.allow-core-thread-time-out",
+      "type": "java.lang.Boolean",
+      "description": "核心线程是否允许超时，默认 false <p>Whether the core thread allows timeouts. Default: false",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.await-termination-seconds",
+      "type": "java.lang.Integer",
+      "description": "IOC容器关闭时未完成任务等待时间，单位秒，默认 10 <p>与waitForTasksToCompleteOnShutdown同时配置 <p>The waiting seconds for incomplete tasks when the IOC container is closed. Default: false <p>Configured at the same time as waitForTasksToCompleteOnShutdown.",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.core-pool-size",
+      "type": "java.lang.Integer",
+      "description": "核心线程数，默认 可使用处理器数*2 <p>Core pool size. Default: CPUS*2",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.keep-alive-seconds",
+      "type": "java.lang.Integer",
+      "description": "空闲线程存活时间，单位秒，默认 60 <p>Idle threads keep alive seconds. Default: 60",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.max-pool-size",
+      "type": "java.lang.Integer",
+      "description": "最大线程数，默认 核心线程数*2 <p>Max pool size. Default: THREAD_CORE_SIZE*2",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.queue-capacity",
+      "type": "java.lang.Integer",
+      "description": "队列深度,默认 最大线程数*2 <p>Depth of queue. Default: THREAD_MAX_SIZE*2",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.rejected-execution-handler",
+      "type": "java.lang.String",
+      "description": "拒绝策略，默认 AbortPolicy <p>Deny policy. Default: AbortPolicy <p>AbortPolicy: 丢弃任务并抛出RejectedExecutionException异常 <p>DiscardPolicy: 丢弃任务但不抛出异常 <p>DiscardOldestPolicy: 丢弃最旧的处理程序，然后重试，如果执行器关闭，这时丢弃任务 <p>CallerRunsPolicy: 执行器执行任务失败，则在策略回调方法中执行任务，如果执行器关闭，这时丢弃任务",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.thread-name-prefix",
+      "type": "java.lang.String",
+      "description": "自定义线程名前缀，默认  Async-ThreadPool- <p>Thread name prefix. Default: Async-ThreadPool-",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.base-thread-pool.wait-for-tasks-to-complete-on-shutdown",
+      "type": "java.lang.Boolean",
+      "description": "IOC容器关闭时是否等待未完成任务，默认 false <p>与awaitTerminationSeconds同时配置 <p>Whether to wait for outstanding tasks when the IOC container is closed. Default: false <p>Configured at the same time as awaitTerminationSeconds.",
+      "sourceType": "org.endless.erp.share.thread.base.BaseThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.allow-core-thread-time-out",
+      "type": "java.lang.Boolean",
+      "description": "核心线程是否允许超时，默认 false <p>Whether the core thread allows timeouts. Default: false",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.await-termination-seconds",
+      "type": "java.lang.Integer",
+      "description": "IOC容器关闭时未完成任务等待时间，单位秒，默认 10 <p>与waitForTasksToCompleteOnShutdown同时配置 <p>The waiting seconds for incomplete tasks when the IOC container is closed. Default: false <p>Configured at the same time as waitForTasksToCompleteOnShutdown.",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.core-pool-size",
+      "type": "java.lang.Integer",
+      "description": "核心线程数，默认 可使用处理器数*2 <p>Core pool size. Default: CPUS*2",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.keep-alive-seconds",
+      "type": "java.lang.Integer",
+      "description": "空闲线程存活时间，单位秒，默认 60 <p>Idle threads keep alive seconds. Default: 60",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.max-pool-size",
+      "type": "java.lang.Integer",
+      "description": "最大线程数，默认 核心线程数*2 <p>Max pool size. Default: THREAD_CORE_SIZE*2",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.queue-capacity",
+      "type": "java.lang.Integer",
+      "description": "队列深度,默认 最大线程数*2 <p>Depth of queue. Default: THREAD_MAX_SIZE*2",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.rejected-execution-handler",
+      "type": "java.lang.String",
+      "description": "拒绝策略，默认 AbortPolicy <p>Deny policy. Default: AbortPolicy <p>AbortPolicy: 丢弃任务并抛出RejectedExecutionException异常 <p>DiscardPolicy: 丢弃任务但不抛出异常 <p>DiscardOldestPolicy: 丢弃最旧的处理程序，然后重试，如果执行器关闭，这时丢弃任务 <p>CallerRunsPolicy: 执行器执行任务失败，则在策略回调方法中执行任务，如果执行器关闭，这时丢弃任务",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.thread-name-prefix",
+      "type": "java.lang.String",
+      "description": "自定义线程名前缀，默认  Async-ThreadPool- <p>Thread name prefix. Default: Async-ThreadPool-",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    },
+    {
+      "name": "spring.task.game-eve-thread-pool.wait-for-tasks-to-complete-on-shutdown",
+      "type": "java.lang.Boolean",
+      "description": "IOC容器关闭时是否等待未完成任务，默认 false <p>与awaitTerminationSeconds同时配置 <p>Whether to wait for outstanding tasks when the IOC container is closed. Default: false <p>Configured at the same time as awaitTerminationSeconds.",
+      "sourceType": "org.endless.erp.game.eve.share.thread.GameEveThreadPoolProperties"
+    }
+  ],
+  "hints": []
+}

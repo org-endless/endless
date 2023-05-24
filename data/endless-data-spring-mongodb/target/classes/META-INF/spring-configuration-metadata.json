@@ -1,0 +1,146 @@
+{
+  "groups": [
+    {
+      "name": "spring.data.mongodb",
+      "type": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.gridfs",
+      "type": "org.springframework.boot.autoconfigure.mongo.MongoProperties$Gridfs",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties",
+      "sourceMethod": "getGridfs()"
+    },
+    {
+      "name": "spring.data.mongodb.ssl",
+      "type": "org.springframework.boot.autoconfigure.mongo.MongoProperties$Ssl",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties",
+      "sourceMethod": "getSsl()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.data.mongodb.additional-hosts",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.authentication-database",
+      "type": "java.lang.String",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.auto-index-creation",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.database",
+      "type": "java.lang.String",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.field-naming-strategy",
+      "type": "java.lang.Class<?>",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.gridfs.bucket",
+      "type": "java.lang.String",
+      "sourceType": "org.springframework.boot.autoconfigure.mongo.MongoProperties$Gridfs"
+    },
+    {
+      "name": "spring.data.mongodb.gridfs.database",
+      "type": "java.lang.String",
+      "sourceType": "org.springframework.boot.autoconfigure.mongo.MongoProperties$Gridfs"
+    },
+    {
+      "name": "spring.data.mongodb.host",
+      "type": "java.lang.String",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.maintenance-frequency",
+      "type": "java.lang.Integer",
+      "description": "ConnectionPoolSettings.maintenanceFrequencyMS Sets the frequency for running a maintenance job.",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.maintenance-initial-delay",
+      "type": "java.lang.Integer",
+      "description": "ConnectionPoolSettings.maintenanceFrequency Sets the time to wait before running the first maintenance job.",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.max-connection-idle-time",
+      "type": "java.lang.Integer",
+      "description": "ConnectionPoolSettings.maxConnectionIdleTimeMS Sets the maximum time a connection can be idle before it's closed.",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.max-connection-life-time",
+      "type": "java.lang.Integer",
+      "description": "ConnectionPoolSettings.maxConnectionLifeTimeMS Sets the maximum time a pooled connection can be alive before it's closed.",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.max-size",
+      "type": "java.lang.Integer",
+      "description": "ConnectionPoolSettings.maxSize Sets the maximum amount of connections associated with a connection pool.",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.max-wait-time",
+      "type": "java.lang.Integer",
+      "description": "ConnectionPoolSettings.maxWaitTimeMS Sets the maximum time to wait for an available connection.",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.min-size",
+      "type": "java.lang.Integer",
+      "description": "最小连接池数<P> ConnectionPoolSettings minSize Sets the minimum amount of connections associated with a connection pool.",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.password",
+      "type": "java.lang.Character[]",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.port",
+      "type": "java.lang.Integer",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.replica-set-name",
+      "type": "java.lang.String",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.ssl.bundle",
+      "type": "java.lang.String",
+      "sourceType": "org.springframework.boot.autoconfigure.mongo.MongoProperties$Ssl"
+    },
+    {
+      "name": "spring.data.mongodb.ssl.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.springframework.boot.autoconfigure.mongo.MongoProperties$Ssl"
+    },
+    {
+      "name": "spring.data.mongodb.uri",
+      "type": "java.lang.String",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.username",
+      "type": "java.lang.String",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    },
+    {
+      "name": "spring.data.mongodb.uuid-representation",
+      "type": "org.bson.UuidRepresentation",
+      "sourceType": "org.endless.data.spring.mongodb.config.EndlessMongoClientProperties"
+    }
+  ],
+  "hints": []
+}

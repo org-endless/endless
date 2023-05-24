@@ -1,0 +1,4 @@
+org\endless\data\spring\mongodb\config\EndlessMongoClientProperties.class
+META-INF\spring-configuration-metadata.json
+org\endless\data\spring\mongodb\config\EndlessMongoClientSettingsBuilderCustomizer.class
+org\endless\data\spring\mongodb\reactive\EndlessReactiveMongoClientConfiguration.class
