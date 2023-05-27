@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
@@ -29,15 +28,17 @@ public class MongoConfiguration {
         this.mongoProperties = mongoProperties;
     }
 
-    public @Bean MongoTemplate mongoTemplate(@Qualifier("mongoCustomConversions")  MongoCustomConversions mongoCustomConversions) {
-        var mongoTemplate = new MongoTemplate(mongoDatabaseFactory(mongoProperties));
+    public @Bean MongoTemplate mongoTemplate(
+            @Qualifier("mongoCustomConversions") MongoCustomConversions mongoCustomConversions,
+            @Qualifier("mongoDatabaseFactory") MongoDatabaseFactory mongoDatabaseFactory) {
+        var mongoTemplate = new MongoTemplate(mongoDatabaseFactory);
         var mappingMongoConverter = (MappingMongoConverter) mongoTemplate.getConverter();
         mappingMongoConverter.setCustomConversions(mongoCustomConversions);
         mappingMongoConverter.afterPropertiesSet();
         return mongoTemplate;
     }
 
-    public @Bean MongoDatabaseFactory mongoDatabaseFactory(MongoProperties mongoProperties) {
+    public @Bean MongoDatabaseFactory mongoDatabaseFactory() {
         return new SimpleMongoClientDatabaseFactory(mongoProperties.getUri());
     }
 

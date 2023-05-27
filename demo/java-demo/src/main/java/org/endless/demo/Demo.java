@@ -1,87 +1,78 @@
 package org.endless.demo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.yaml.snakeyaml.Yaml;
-
-
-
-import java.io.*;
-
-import java.lang.reflect.Field;
-import java.net.URLDecoder;
-import java.text.NumberFormat;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Demo {
-    public static void main(String[] args)  {
-        var name = new Name();
+    public static void main(String[] args) {
 
-        name.getEnName().setFirstName("123");
+        List<Double> nums = new ArrayList<>();
 
-        System.out.println(name.getEnName().getFirstName());
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(1.0);
+        nums.add(2.0);
+        nums.add(3.0);
+        nums.add(4.0);
+        nums.add(500.0);
+        nums.add(600000.0);
 
-
+        System.out.println("avg is " + avg(nums));
+        System.out.println("avg2 is " + avg2(nums));
+        System.out.println("median is " + median(nums));
 
     }
 
-    public void test() throws UnsupportedEncodingException {
+    public static double avg(List<Double> nums) {
 
-        String s = "\u6CE8\u518C";
+        double total = nums.stream().mapToDouble(num -> num).sum();
+        return total / nums.size();
 
-        System.out.println("String:  " + URLDecoder.decode(s, "utf-8"));
     }
 
-
-    public void test1(){
-        Pattern pattern = Pattern.compile("^\\d{1,50}:$",Pattern.MULTILINE);
-        InputStream stream = Demo.class.getClassLoader()
-                .getResourceAsStream("categoryIDs.yaml");
-        Scanner scanner = new Scanner(stream);
-        scanner.useDelimiter(pattern);
-        Yaml yaml = new Yaml();
-        Map<String,Object> rat;
-        Map<?, ?> temp;
-        while (scanner.hasNext()) {
-            // scanner.findInLine(pattern)+
-            rat = yaml.load(scanner.next());
-            temp = (Map<?, ?>) rat.get("name");
-            System.out.println(temp);
-        }
-    }
-
-    public void test2() throws  JsonProcessingException {
-        Pattern pattern = Pattern.compile("^\\d{1,50}:$",Pattern.MULTILINE);
-        ObjectMapper mapper = new ObjectMapper();
-        Yaml yaml = new Yaml();
-        Map<String,Object> rat;
-        InputStream stream = Demo.class.getClassLoader()
-                .getResourceAsStream("test.yaml");
-        Scanner scanner = new Scanner(stream);
-        scanner.useDelimiter(pattern);
-        while (scanner.hasNext()) {
-            rat = yaml.load(scanner.findInLine(pattern)+scanner.next());
-            System.out.println(mapper.writeValueAsString(rat));
-            System.out.println("--------------------------------------");
-        }
-    }
-    public Map<String,Object> convert(Object obj) {
-
-        Map<String,Object> map=new HashMap<>();
-        Field[] fields = obj.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            if (obj instanceof Class<?>)
-                field.setAccessible(true);
-            try {
-                map.put(field.getName(), field.get(obj));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+    public static double avg2(List<Double> nums) {
+        List<Double> nums2 = new ArrayList<>();
+        double total = 0;
+        for (Double num : nums) {
+            if (nums2.contains(num)) {
+                continue;
             }
+            double count = Collections.frequency(nums, num);
+            nums2.add(num);
+            double gain = count / nums.size();
+            total = total + num * gain;
         }
-        return map;
+        return total;
+
+    }
+
+    public static double median(List<Double> list) {
+
+        // Sort the list
+        Collections.sort(list);
+
+        int size = list.size();
+        double median;
+
+        // Check if size of list is even or odd
+        if (size % 2 == 0) {
+            median = (list.get(size / 2) + list.get(size / 2 - 1)) / 2.0;
+        } else {
+            median = list.get(size / 2);
+        }
+
+        return median;
     }
 
 }

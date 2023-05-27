@@ -44,12 +44,11 @@
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
 
         <!-- Dependencies -->
-        <lombok.version>1.18.24</lombok.version>
-        <reactor-test.version>3.5.1</reactor-test.version>
+        <lombok.version>1.18.28</lombok.version>
         <snakeyaml.version>2.0</snakeyaml.version>
-        <jackson.version>2.14.2</jackson.version>
-        <commons-beanutils.version>1.9.3</commons-beanutils.version>
-        <junit.version>4.13.2</junit.version>
+        <jackson.version>2.15.1</jackson.version>
+        <reactor-test.version>3.5.6</reactor-test.version>
+        <junit-jupiter-api.version>5.10.0-M1</junit-jupiter-api.version>
         <spring-boot.version>3.1.0</spring-boot.version>
 
     </properties>
@@ -62,11 +61,6 @@
                 <version>${lombok.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.projectreactor</groupId>
-                <artifactId>reactor-test</artifactId>
-                <version>${reactor-test.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
                 <version>${snakeyaml.version}</version>
@@ -77,9 +71,14 @@
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-test</artifactId>
+                <version>${reactor-test.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

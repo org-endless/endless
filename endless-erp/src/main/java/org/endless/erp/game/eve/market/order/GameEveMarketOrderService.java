@@ -1,80 +1,71 @@
 package org.endless.erp.game.eve.market.order;
 
-import org.endless.erp.share.mongo.bulk.BulkMongoRepositoryImpl;
-import org.endless.erp.share.util.date.DateFormatter;
-import org.endless.erp.share.util.decimal.Decimal;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import lombok.extern.log4j.Log4j2;
+import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
+import org.endless.erp.share.ddd.order.OrderService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * GameEvePriceService
- * update from ESI
+ * <p>update from ESI
+ * <p>create 2023/05/25 21:40
  *
  * @author Deng Haozhi
- * @date 2023/3/16 19:44
- * @since 0.0.2
+ * @since 0.0.3
  */
+@Log4j2
 @Service
-public class GameEveMarketOrderService {
+public class GameEveMarketOrderService implements OrderService {
 
     private final GameEveMarketOrderAdapter gameEveMarketOrderAdapter;
 
-    private final BulkMongoRepositoryImpl bulkMongoRepository;
+    private final GameEveAsyncTask gameEveAsyncTask;
 
-    private final GameEveMarketOrderJpaRepository gameEveMarketOrderJpaRepository;
+    private final MongoOperations mongoOperations;
 
-    private final MongoTemplate mongoTemplate;
+    private final GameEveMarketOrderRepositoryBase gameEveMarketOrderJpaRepository;
 
-    public GameEveMarketOrderService(BulkMongoRepositoryImpl bulkMongoRepository, GameEveMarketOrderAdapter gameEveMarketOrderAdapter, GameEveMarketOrderJpaRepository gameEveMarketOrderJpaRepository, MongoTemplate mongoTemplate) {
-        this.bulkMongoRepository = bulkMongoRepository;
+    public GameEveMarketOrderService(
+            GameEveMarketOrderAdapter gameEveMarketOrderAdapter,
+            @Qualifier("gameEveMarketOrderLoadTask") GameEveAsyncTask gameEveAsyncTask,
+            MongoOperations mongoOperations, GameEveMarketOrderRepositoryBase gameEveMarketOrderJpaRepository) {
+
         this.gameEveMarketOrderAdapter = gameEveMarketOrderAdapter;
+        this.gameEveAsyncTask = gameEveAsyncTask;
+        this.mongoOperations = mongoOperations;
         this.gameEveMarketOrderJpaRepository = gameEveMarketOrderJpaRepository;
-        this.mongoTemplate = mongoTemplate;
     }
 
-
+    @Override
     public void save() {
+
+        var begin = System.currentTimeMillis();
+        log.info("Loading!");
+        log.debug("Load main thread begin: " + begin);
 
         Integer pages = gameEveMarketOrderAdapter.getPages();
 
-        if (pages == 0) return;
+        if (pages == 0) {
+            log.error("Get order pages ERROR form the ESI!");
+            return;
+        }
+        mongoOperations.updateMulti(
+                Query.query(Criteria.where("existed").is(true)),
+                Update.update("existed", false),
+                GameEveMarketOrder.class);
 
         for (int i = 0; i < pages; i++) {
-
-            var orderList = gameEveMarketOrderAdapter.getOrders(i + 1);
-            List<Pair<Query, Update>> upsertList = new ArrayList<>();
-
-            orderList.forEach(order -> {
-
-                var rat = (Map<?, ?>) order;
-
-                var query = Query.query(Criteria.where("orderId").is(String.valueOf(rat.get("order_id"))));
-                var update = Update.update("itemId", rat.get("type_id"))
-                        .set("isBuyOrder", rat.get("is_buy_order"))
-                        .set("minVolume", rat.get("min_volume"))
-                        .set("volumeRemain", rat.get("volume_remain"))
-                        .set("volumeTotal", rat.get("volume_total"))
-                        .set("price", Decimal.format(rat.get("price")))
-                        .set("updateDateTime", DateFormatter.nowIso())
-                        .set("updateTimeStamp", System.currentTimeMillis());
-
-                upsertList.add(Pair.of(query, update));
-            });
-            bulkMongoRepository.upsert(upsertList, GameEveMarketOrder.class);
-            System.out.println("upsert!");
+            log.trace("The page is " + (i + 1));
+            gameEveAsyncTask.run(i + 1);
         }
-        System.out.println("GameEveMarketOrder save executed!");
+
+        log.info("Saved executed!");
+        log.debug("main thread cost : " + (System.currentTimeMillis() - begin));
     }
 
     // public Map<String, Object> getMarketPrice(List<String> itemIds) {
@@ -109,11 +100,4 @@ public class GameEveMarketOrderService {
     // public List<GameEveMarketOrder> getByItemId(String itemId) {
     //     return gameEveMarketOrderJpaRepository.findByItemId(itemId);
     // }
-
-    public List<GameEveMarketOrder> getByItemId(List<String> itemIds) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("itemId").in(itemIds));
-        return mongoTemplate.find(query, GameEveMarketOrder.class, "eve.market.order");
-        // return marketOrderRepository.findByItemIdIn(itemIds);
-    }
 }

@@ -1,11 +1,7 @@
 package org.endless.erp.game.eve.sales;
 
 import lombok.extern.log4j.Log4j2;
-import org.endless.erp.game.eve.share.ddd.item.GameEveItemService;
-import org.endless.erp.game.eve.share.thread.GameEveThreadPoolConfiguration;
 import org.springframework.stereotype.Service;
-
-import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * GameEveSalesService

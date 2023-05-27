@@ -1,24 +1,10 @@
 package org.endless.erp.game.eve.profit;
 
-import org.endless.erp.game.eve.share.ddd.formula.GameEveFormula;
-import org.endless.erp.game.eve.share.ddd.formula.GameEveFormulaService;
-import org.endless.erp.game.eve.share.ddd.item.GameEveItem;
-import org.endless.erp.game.eve.share.ddd.item.GameEveItemService;
-import org.endless.erp.share.mongo.bulk.BulkMongoRepository;
+import org.endless.erp.game.eve.item.GameEveItem;
 import org.endless.erp.share.util.decimal.Decimal;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * @author Deng Haozhi
@@ -71,58 +57,58 @@ public class GameEveProfitService {
         // bulkMongoRepository.upsert(upsertList, 1000, GameEveItem.class);
         // System.out.println("GameEveItemService updateProfit executed!");
     }
+    //
+    // protected BigDecimal getManufacturingProcurementProfit(GameEveItem gameEveItem) {
+    //     return Decimal.subtract(getIncome(gameEveItem), getProcurementCost(gameEveItem));
+    // }
+    //
+    // protected BigDecimal getManufacturingProcurementProfitMargin(GameEveItem gameEveItem) {
+    //     return Decimal.multiply(new BigDecimal("100"), Decimal.divide(getManufacturingProcurementProfit(gameEveItem), gameEveItem.getCost().getManufacturingProcurementCost()));
+    // }
+    //
+    // protected BigDecimal getManufacturingProcurementProfitPerDay(GameEveItem gameEveItem, GameEveFormula gameEveFormula) {
+    //     return Decimal.multiply(getDailySales(gameEveItem, gameEveFormula), getManufacturingProcurementProfit(gameEveItem));
+    // }
+    //
+    // protected BigDecimal getManufacturingProfit(GameEveItem gameEveItem) {
+    //     return Decimal.subtract(getIncome(gameEveItem), getCost(gameEveItem));
+    // }
+    //
+    // protected BigDecimal getManufacturingProfitMargin(GameEveItem gameEveItem) {
+    //     return Decimal.multiply(new BigDecimal("100"), Decimal.divide(getManufacturingProfit(gameEveItem), gameEveItem.getCost().getManufacturingCost()));
+    // }
+    //
+    // protected BigDecimal getManufacturingProfitPerDay(GameEveItem gameEveItem, GameEveFormula gameEveFormula) {
+    //     return Decimal.multiply(getDailySales(gameEveItem, gameEveFormula), getManufacturingProfit(gameEveItem));
+    // }
+    //
+    // // protected BigDecimal getTradingProfit(GameEveItem gameEveItem) {
+    // //     return Decimal.subtract(gameEveItem.getPrice().getCurPrice(), gameEveItem.getPrice().getBuyPrice());
+    // // }
+    //
+    // protected BigDecimal getTradingProfitMargin(GameEveItem gameEveItem) {
+    //     return Decimal.multiply(new BigDecimal("100"), Decimal.divide(getTradingProfit(gameEveItem), gameEveItem.getPrice().getBuyPrice()));
+    // }
+    //
+    // protected BigDecimal getTradingProfitPerDay(GameEveItem gameEveItem) {
+    //
+    //     // 日销售系数
+    //     var salesFactor = Decimal.divide(gameEveItem.getSales().getDailyMarketSalesByYear(), new BigDecimal("5"));
+    //
+    //     return Decimal.multiply(salesFactor, getTradingProfit(gameEveItem));
+    // }
 
-    protected BigDecimal getManufacturingProcurementProfit(GameEveItem gameEveItem) {
-        return Decimal.subtract(getIncome(gameEveItem), getProcurementCost(gameEveItem));
-    }
 
-    protected BigDecimal getManufacturingProcurementProfitMargin(GameEveItem gameEveItem) {
-        return Decimal.multiply(new BigDecimal("100"), Decimal.divide(getManufacturingProcurementProfit(gameEveItem), gameEveItem.getCost().getManufacturingProcurementCost()));
-    }
-
-    protected BigDecimal getManufacturingProcurementProfitPerDay(GameEveItem gameEveItem, GameEveFormula gameEveFormula) {
-        return Decimal.multiply(getDailySales(gameEveItem, gameEveFormula), getManufacturingProcurementProfit(gameEveItem));
-    }
-
-    protected BigDecimal getManufacturingProfit(GameEveItem gameEveItem) {
-        return Decimal.subtract(getIncome(gameEveItem), getCost(gameEveItem));
-    }
-
-    protected BigDecimal getManufacturingProfitMargin(GameEveItem gameEveItem) {
-        return Decimal.multiply(new BigDecimal("100"), Decimal.divide(getManufacturingProfit(gameEveItem), gameEveItem.getCost().getManufacturingCost()));
-    }
-
-    protected BigDecimal getManufacturingProfitPerDay(GameEveItem gameEveItem, GameEveFormula gameEveFormula) {
-        return Decimal.multiply(getDailySales(gameEveItem, gameEveFormula), getManufacturingProfit(gameEveItem));
-    }
-
-    protected BigDecimal getTradingProfit(GameEveItem gameEveItem) {
-        return Decimal.subtract(gameEveItem.getPrice().getCurPrice(), gameEveItem.getPrice().getBuyPrice());
-    }
-
-    protected BigDecimal getTradingProfitMargin(GameEveItem gameEveItem) {
-        return Decimal.multiply(new BigDecimal("100"), Decimal.divide(getTradingProfit(gameEveItem), gameEveItem.getPrice().getBuyPrice()));
-    }
-
-    protected BigDecimal getTradingProfitPerDay(GameEveItem gameEveItem) {
-
-        // 日销售系数
-        var salesFactor = Decimal.divide(gameEveItem.getSales().getDailyMarketSalesByYear(), new BigDecimal("5"));
-
-        return Decimal.multiply(salesFactor, getTradingProfit(gameEveItem));
-    }
-
-
-    protected BigDecimal getIncome(GameEveItem gameEveItem) {
-        // 中介费率
-        var intermediaryRate = new BigDecimal("0.03");
-        // 销售税率
-        var saleTaxRate = new BigDecimal("0.036");
-        // 销售费用系数
-        var saleExpensesFactor = Decimal.subtract(Decimal.subtract(new BigDecimal("1"), intermediaryRate), saleTaxRate);
-        // 收入
-        return Decimal.multiply(gameEveItem.getPrice().getCurPrice(), saleExpensesFactor);
-    }
+    // protected BigDecimal getIncome(GameEveItem gameEveItem) {
+    //     // 中介费率
+    //     var intermediaryRate = new BigDecimal("0.03");
+    //     // 销售税率
+    //     var saleTaxRate = new BigDecimal("0.036");
+    //     // 销售费用系数
+    //     var saleExpensesFactor = Decimal.subtract(Decimal.subtract(new BigDecimal("1"), intermediaryRate), saleTaxRate);
+    //     // 收入
+    //     return Decimal.multiply(gameEveItem.getPrice().getCurPrice(), saleExpensesFactor);
+    // }
 
     protected BigDecimal getProcurementCost(GameEveItem gameEveItem) {
 
@@ -157,26 +143,27 @@ public class GameEveProfitService {
      * @return java.math.BigDecimal
      **/
 
-    protected BigDecimal getDailySales(GameEveItem gameEveItem, GameEveFormula gameEveFormula) {
-
-        // var dailyYield = gameEveFormulaService.getManufacturingYieldPerDay(gameEveFormula, gameEveItem.getItemId());
-
-        var dailySales = getDailySales(gameEveItem);
-
-        // if (dailyYield != null && dailySales != null && dailyYield.compareTo(dailySales) < 0) return dailyYield;
-
-        return dailySales;
-    }
+    // protected BigDecimal getDailySales(GameEveItem gameEveItem, GameEveFormula gameEveFormula) {
+    //
+    //     // var dailyYield = gameEveFormulaService.getManufacturingYieldPerDay(gameEveFormula, gameEveItem.getItemId());
+    //
+    //     // var dailySales = getDailySales(gameEveItem);
+    //
+    //     // if (dailyYield != null && dailySales != null && dailyYield.compareTo(dailySales) < 0) return dailyYield;
+    //
+    //     return dailySales;
+    // }
 
     /**
      * 每日销售量占比市场每日销售量，根据估算比例获得每日销售量的评估
      * <p>Daily sales as a percentage of daily sales in the market. Get an estimate of daily sales based on the estimated proportion.
      * 每日销量提供查询接口
+     *
      * @param gameEveItem EVE物品对象 &nbsp&nbsp The EVE GameEveItem Object.
      * @return java.math.BigDecimal
      **/
-    protected BigDecimal getDailySales(GameEveItem gameEveItem) {
-        return Decimal.format(Decimal.divide(gameEveItem.getSales().getDailyMarketSalesByYear(), new BigDecimal("1")));
-    }
+    // protected BigDecimal getDailySales(GameEveItem gameEveItem) {
+    //     return Decimal.format(Decimal.divide(gameEveItem.getSales().getDailyMarketSalesByYear(), new BigDecimal("1")));
+    // }
 
 }

@@ -1,26 +1,7 @@
 package org.endless.erp.game.eve.sales;
 
 import lombok.extern.log4j.Log4j2;
-import org.endless.erp.game.eve.market.history.MarketHistoryService;
-import org.endless.erp.game.eve.share.ddd.item.GameEveItem;
-import org.endless.erp.game.eve.share.ddd.item.GameEveItemService;
-import org.endless.erp.game.eve.share.thread.GameEveThreadPoolConfiguration;
-import org.endless.erp.share.mongo.bulk.BulkMongoRepository;
-import org.endless.erp.share.util.decimal.Decimal;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.util.Pair;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * GameEveSalesUpdateTaskImpl
@@ -37,11 +18,11 @@ public class GameEveSalesUpdateTaskImpl implements GameEveSalesUpdateTask {
     //
     // private final GameEveItemService gameEveItemService;
     //
-    // private final MarketHistoryService marketHistoryService;
+    // private final GameEveMarketSaleHistoryService marketHistoryService;
     //
     // private final GameEveThreadPoolConfiguration gameEveThreadPoolConfiguration;
     //
-    // public GameEveSalesUpdateTaskImpl(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, MarketHistoryService marketHistoryService, GameEveThreadPoolConfiguration gameEveThreadPoolConfiguration) {
+    // public GameEveSalesUpdateTaskImpl(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, GameEveMarketSaleHistoryService marketHistoryService, GameEveThreadPoolConfiguration gameEveThreadPoolConfiguration) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     //     this.gameEveItemService = gameEveItemService;
     //     this.marketHistoryService = marketHistoryService;

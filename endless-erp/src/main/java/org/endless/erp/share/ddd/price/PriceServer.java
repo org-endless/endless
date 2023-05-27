@@ -1,13 +1,23 @@
 package org.endless.erp.share.ddd.price;
 
-import org.springframework.stereotype.Service;
-
 /**
  * PriceServer
+ * <p>价格服务接口
+ * <p>The price service interface.
+ *
+ * <p>create 2023/05/26 15:41
+ *
  * @author Deng Haozhi
- * @date 2023/5/16 8:51
  * @since 0.0.3
  */
 public interface PriceServer {
-    default void update() {}
+
+    default void update() {
+    }
+
+    default <T> void update(T argument) {
+    }
+
+    default <T> void update(T[] arguments) {
+    }
 }

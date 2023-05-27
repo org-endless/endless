@@ -10,12 +10,14 @@ import org.springframework.validation.annotation.Validated;
 import java.math.BigDecimal;
 
 /**
- * 价格类
- * Price for Erp.
+ * Price
+ * <p>价格模板类
+ * <p>The price model.
+ *
+ * <p>create 2023/05/26 15:40
  *
  * @author Deng Haozhi
- * @date 2022/11/17 21:12
- * @since 0.0.1
+ * @since 0.0.3
  */
 @Data
 @NoArgsConstructor
@@ -27,38 +29,139 @@ public class Price {
      * 现价
      */
     @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-    private BigDecimal curPrice;
+    private BigDecimal currentPrice;
+
+    /**
+     * 预估价格
+     * <p> 根据每日销量估算出可以达到10%利润的价格
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal estimatedPrice;
+
+    /**
+     * 出售价格
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal sellPrice;
+
+    /**
+     * 采购价格
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal purchasePrice;
 
     /**
      * 上日价格
      */
     @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-    private BigDecimal prePrice;
+    private BigDecimal previousDayPrice;
 
     /**
      * 上次价格
      */
     @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
     private BigDecimal lastPrice;
-    // 平均价格
-    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-    private BigDecimal avgPrice;
-    // 最低价
+
+    /**
+     * 最低价
+     */
     @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
     private BigDecimal minPrice;
-    // 最高价
+
+    /**
+     * 最高价
+     */
     @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
     private BigDecimal maxPrice;
-    // 市场价格
-    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-    private BigDecimal marketPrice;
-    // 基础价格
+
+    /**
+     * 基础价格
+     */
     @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
     private BigDecimal basePrice;
-    // 采购价格
-    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-    private BigDecimal buyPrice;
 
-    // 预估价格
-//     利润 10% 然后 销量满足每日销量
+    /**
+     * 平均价格
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal averagePrice;
+
+    /**
+     * 价格中位数
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal medianPrice;
+
+    /**
+     * 过去一周平均价格，从当日开始计算一周
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal averagePriceLastWeek;
+
+    /**
+     * 过去一周价格中位数，从当日开始计算一周
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal medianPriceLastWeek;
+
+    /**
+     * 过去一月平均价格，从当日开始计算一月
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal averagePriceLastMonth;
+
+    /**
+     * 过去一月价格中位数，从当日开始计算一月
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal medianPriceLastMonth;
+
+    /**
+     * 过去一个季度平均价格，从当日开始计算一个季度
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal averagePriceLastQuarter;
+
+    /**
+     * 过去一个季度价格中位数，从当日开始计算一个季度
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal medianPriceLastQuarter;
+
+    /**
+     * 过去半年平均价格，从当日开始计算半年
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal averagePriceLastHalfYear;
+
+    /**
+     * 过去半年价格中位数，从当日开始计算半年
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal medianPriceLastHalfYear;
+
+    /**
+     * 过去一年平均价格，从当日开始计算一年
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal averagePriceLastYear;
+
+    /**
+     * 过去一年价格中位数，从当日开始计算一年
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal medianPriceLastYear;
+
+    /**
+     * 过去三年平均价格，从当日开始计算三年
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal averagePriceLastThreeYear;
+
+    /**
+     * 过去三年价格中位数，从当日开始计算三年
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal medianPriceLastThreeYear;
+
 }

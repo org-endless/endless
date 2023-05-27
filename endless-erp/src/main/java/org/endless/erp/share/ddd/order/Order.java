@@ -5,18 +5,21 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.endless.erp.game.eve.share.ddd.formula.GameEveFormula;
 import org.endless.erp.share.pattern.Regular;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
 
 /**
  * Order
+ * <p>订单模板类
+ * <p>The order model.
+ *
+ * <p>create 2023/05/26 15:41
  *
  * @author Deng Haozhi
- * @date 2023/5/24 9:49
  * @since 0.0.3
  */
 @Data
@@ -29,6 +32,7 @@ public class Order {
      * 复合编号：行业编号+"_"+订单编号
      */
     @Id
+    @NotEmpty
     @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
     private String id;
 
@@ -45,6 +49,13 @@ public class Order {
     @NotEmpty
     @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
     private String industryId;
+
+    /**
+     * 物品/商品编号
+     */
+    @NotEmpty
+    @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
+    private String itemId;
 
     /**
      * 订单类型
@@ -70,29 +81,60 @@ public class Order {
     private BigDecimal totalQuantity;
 
     /**
+     * 订单价格
+     */
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal orderPrice;
+
+    /**
      * 是否存在
      */
     private Boolean existed;
 
     /**
+     * 版本，乐观锁
+     */
+    @Version
+    private Long version;
+
+    /**
      * 更新时间
      */
-    @Pattern(regexp = Regular.DATE, message = Regular.DATE_MESSAGE)
     private String updateDateTime;
 
     /**
      * 更新时间戳
      */
-    @Pattern(regexp = Regular.TIME, message = Regular.TIME_MESSAGE)
     private long updateTimeStamp;
 
+    /**
+     * Categories
+     * <p>订单类型枚举
+     *
+     * <p>create 2023/05/26 16:42
+     *
+     * @author Deng Haozhi
+     * @see Enum
+     * @since 0.0.3
+     */
     public enum Categories {
 
         sale("0", "sale", "出售"),
         purchase("1", "purchase", "采购");
 
+        /**
+         * 类型编号
+         */
         private final String categoriesId;
+
+        /**
+         * 英文说明
+         */
         private final String enInstruction;
+
+        /**
+         * 中文说明
+         */
         private final String zhInstruction;
 
         Categories(String categoriesId, String enInstruction, String zhInstruction) {
@@ -113,5 +155,4 @@ public class Order {
             return zhInstruction;
         }
     }
-
 }

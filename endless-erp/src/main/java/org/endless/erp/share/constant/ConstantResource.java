@@ -1,7 +1,6 @@
 package org.endless.erp.share.constant;
 
 import java.math.BigDecimal;
-import java.util.Queue;
 
 /**
  * ConstantResource
@@ -11,7 +10,8 @@ import java.util.Queue;
  * @since 0.0.1
  */
 public class ConstantResource {
-    public final static Integer PAGE_SIZE = 1000;
+    public final static Integer PAGE_SIZE = 100;
+    public final static Integer CURSOR_BATCH_SIZE = 100;
 
     public final static String REGION_ID = "10000002";
 

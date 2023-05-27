@@ -5,7 +5,7 @@ import org.endless.erp.share.thread.base.BaseAsyncTask;
 import org.endless.erp.share.util.list.ListSplitter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.BulkOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.util.Pair;
@@ -15,50 +15,50 @@ import java.util.List;
 
 /**
  * BulkMongoRepositoryImpl
+ * <p>create 2023/05/25 21:52
  *
  * @author Deng Haozhi
- * @date 2023/4/8 16:32
- * @since 0.0.2
+ * @see BulkMongoRepository
+ * @since 0.0.3
  */
 @Log4j2
 @Component
 public class BulkMongoRepositoryImpl implements BulkMongoRepository {
 
-    private final MongoTemplate mongoTemplate;
+    private final MongoOperations mongoOperations;
 
     @Qualifier("BulkMongoTask")
     private final BaseAsyncTask baseAsyncTask;
 
-    public BulkMongoRepositoryImpl(MongoTemplate mongoTemplate, BaseAsyncTask baseAsyncTask) {
-        this.mongoTemplate = mongoTemplate;
+    public BulkMongoRepositoryImpl(MongoOperations mongoOperations, BaseAsyncTask baseAsyncTask) {
+        this.mongoOperations = mongoOperations;
         this.baseAsyncTask = baseAsyncTask;
     }
 
     @Override
-    public void upsert(List<Pair<Query, Update>> pairList, Class<?> entityClass) {
+    public void upsert(List<Pair<Query, Update>> pairs, Class<?> entityClass) {
 
         long begin = System.currentTimeMillis();
         log.debug("Thread: " + Thread.currentThread().getName() + " upsert begin: " + begin);
 
-        var bulkOps = mongoTemplate.bulkOps(BulkOperations.BulkMode.UNORDERED, entityClass);
+        var bulkOps = mongoOperations.bulkOps(BulkOperations.BulkMode.UNORDERED, entityClass);
 
         try {
-            bulkOps.upsert(pairList);
+            bulkOps.upsert(pairs);
             bulkOps.execute();
 
             long end = System.currentTimeMillis();
             log.debug("Thread: " + Thread.currentThread().getName() + " upsert end: " + end);
             log.debug("Thread: " + Thread.currentThread().getName() + " upsert completed!");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void upsert(List<Pair<Query, Update>> pairList, Integer bulkSize, Class<?> entityClass) {
+    public void upsert(List<Pair<Query, Update>> pairs, Integer pageSize, Class<?> entityClass) {
 
-        var upsertLists = ListSplitter.sub(pairList, bulkSize);
+        var upsertLists = ListSplitter.sub(pairs, pageSize);
 
         upsertLists.forEach(upsertList -> {
             baseAsyncTask.run(upsertList, entityClass);

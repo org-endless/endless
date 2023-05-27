@@ -2,11 +2,12 @@ package org.endless.erp.share.ddd.formula;
 
 /**
  * FormulaService
- * <p>配方服务
- * <p>The Formula Service for ERP.
+ * <p>配方服务接口
+ * <p>The formula service interface.
+ *
+ * <p>create 2023/05/26 16:21
  *
  * @author Deng Haozhi
- * @date 2023/5/16 16:40
  * @since 0.0.3
  */
 public interface FormulaService {

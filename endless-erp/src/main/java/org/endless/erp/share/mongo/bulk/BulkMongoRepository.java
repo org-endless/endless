@@ -16,8 +16,7 @@ import java.util.List;
  */
 public interface BulkMongoRepository {
 
+    void upsert(List<Pair<Query, Update>> pairs, Class<?> entityClass);
 
-    void upsert(List<Pair<Query, Update>> upsertList, Class<?> entityClass);
-
-    void upsert(List<Pair<Query, Update>> upsertList, Integer bulkSize, Class<?> entityClass);
+    void upsert(List<Pair<Query, Update>> pairs, Integer pageSize, Class<?> entityClass);
 }

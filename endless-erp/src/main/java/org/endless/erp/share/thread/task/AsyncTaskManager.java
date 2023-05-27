@@ -1,10 +1,13 @@
 package org.endless.erp.share.thread.task;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.endless.erp.share.pattern.Regular;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -18,13 +21,30 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("async.task.Manager")
+@Document("async.task.manager")
 public class AsyncTaskManager {
+
+    /**
+     * 复合编号：行业编号+"_"+任务编号
+     */
+    @Id
+    @NotEmpty
+    @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
+    private String id;
 
     /**
      * 任务编号，使用异步任务组件名称
      */
+    @NotEmpty
+    @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
     private String asyncTaskId;
+
+    /**
+     * 行业编号
+     */
+    @NotEmpty
+    @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
+    private String industryId;
 
     /**
      * 任务状态
@@ -32,27 +52,29 @@ public class AsyncTaskManager {
     private Status status;
 
     /**
+     * 版本，乐观锁
+     */
+    @Version
+    private Long version;
+
+    /**
      * 创建时间
      */
-    @Pattern(regexp = Regular.DATE, message = Regular.DATE_MESSAGE)
     private String createDateTime;
 
     /**
      * 创建时间戳
      */
-    @Pattern(regexp = Regular.TIME, message = Regular.TIME_MESSAGE)
     private long createTimeStamp;
 
     /**
      * 更新时间
      */
-    @Pattern(regexp = Regular.DATE, message = Regular.DATE_MESSAGE)
     private String updateDateTime;
 
     /**
      * 更新时间戳
      */
-    @Pattern(regexp = Regular.TIME, message = Regular.TIME_MESSAGE)
     private long updateTimeStamp;
 
     public enum Status {
@@ -60,7 +82,7 @@ public class AsyncTaskManager {
         create("0", "create", "创建"),
         ready("1", "ready", "就绪"),
         running("2", "running", "运行"),
-        wait("3", "wait", "等待"),
+        waiting("3", "waiting", "等待"),
         exit("4", "exit", "终止");
 
         private final String statusId;

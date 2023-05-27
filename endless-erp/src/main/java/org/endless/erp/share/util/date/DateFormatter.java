@@ -35,13 +35,13 @@ public class DateFormatter {
         return String.valueOf(System.currentTimeMillis());
     }
 
-    public static String IsoToDate(String iso) {
+    public static String isoToDate(String iso) {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         return ZonedDateTime.parse(iso).format(dateTimeFormatter);
     }
 
-    public static String IsoToTime(String iso) {
+    public static String isoToTime(String iso) {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HHmmssSSS");
         return ZonedDateTime.parse(iso).format(dateTimeFormatter);

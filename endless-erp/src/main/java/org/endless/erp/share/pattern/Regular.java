@@ -21,8 +21,8 @@ public class Regular {
     public static final String DECIMAL = "^[0-9]{1,20}+(.[0-9]{2})?$";
     public static final String DECIMAL_MESSAGE = "Must be the right DECIMAL, less than 22 numbers, accurate to 0.01!";
     // 日期 yyyyMMdd
-    public static final String DATE = "^((\\d{3}[1-9]|\\d{2}[1-9]\\d|\\d[1-9]\\d{2}|[1-9]\\d{3})(((0[13578]|1[02])(0[1-9]|[12]\\d|3[01]))|((0[469]|11)(0[1-9]|[12]\\d|30))|(02(0[1-9]|[1]\\d|2[0-8]))))|(((\\d{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))0229)$";
-    public static final String DATE_MESSAGE = "Must be the right DATE, yyyyMMdd!";
+    public static final String DATE = "^((\\d{3}[1-9]|\\d{2}[1-9]\\d|\\d[1-9]\\d{2}|[1-9]\\d{3})-(((0[13578]|1[02])-(0[1-9]|[12]\\d|3[01]))|((0[469]|11)-(0[1-9]|[12]\\d|30))|(02-(0[1-9]|[1]\\d|2[0-8]))))|(((\\d{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)$";
+    public static final String DATE_MESSAGE = "Must be the right DATE, yyyy-MM-dd!";
     // 时间 HHmmssSSS
     public static final String TIME = "^((\\d{3}[1-9]|\\d{2}[1-9]\\d|\\d[1-9]\\d{2}|[1-9]\\d{3})(((0[13578]|1[02])(0[1-9]|[12]\\d|3[01]))|((0[469]|11)(0[1-9]|[12]\\d|30))|(02(0[1-9]|[1]\\d|2[0-8]))))|(((\\d{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))0229)$";
     public static final String TIME_MESSAGE = "Must be the right TIME, HHmmssSSS!";

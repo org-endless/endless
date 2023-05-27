@@ -9,7 +9,7 @@ spring:
   mvc:
     format:
       # 日期格式化
-      date: yyyyMMdd
+      date: yyyy-MM-dd
   thymeleaf:
     # 关闭模板引擎缓存
     cache: false
