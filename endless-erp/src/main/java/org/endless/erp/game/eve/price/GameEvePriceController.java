@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/game/eve/price")
 public class GameEvePriceController {
 
-    private final GameEvePriceService gameEvePriceService;
-
-    public GameEvePriceController(GameEvePriceService gameEvePriceService) {
-        this.gameEvePriceService = gameEvePriceService;
-    }
+    // private final GameEvePriceService gameEvePriceService;
+    //
+    // public GameEvePriceController(GameEvePriceService gameEvePriceService) {
+    //     this.gameEvePriceService = gameEvePriceService;
+    // }
 
     @GetMapping("/update")
     @PostMapping("/update")

@@ -25,7 +25,7 @@ public class GameEveFormulaController {
     @PostMapping("/load")
     public String load() {
 
-        String result = "success";
+        var result = "success";
         gameEveFormulaService.load("data/eve/blueprints.yaml");
         gameEveFormulaService.load("data/eve/planetSchematics.yaml", GameEveFormula.Categories.planet);
         return result;

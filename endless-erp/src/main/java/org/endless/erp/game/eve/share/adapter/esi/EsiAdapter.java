@@ -1,5 +1,6 @@
 package org.endless.erp.game.eve.share.adapter.esi;
 
+import lombok.extern.log4j.Log4j2;
 import org.endless.erp.share.util.url.UrlFormatter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import static org.endless.erp.share.constant.ConstantResource.REGION_ID;
  * @date 2023/4/23 16:59
  * @since 0.0.2
  */
+@Log4j2
 @Component
 public class EsiAdapter {
 
@@ -66,10 +68,10 @@ public class EsiAdapter {
 
             return restTemplate.getForObject(url, List.class, paras);
 
-        }catch (HttpClientErrorException.NotFound e) {
+        } catch (HttpClientErrorException.NotFound e) {
             return null;
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error(e.getMessage());
             return null;
         }
     }

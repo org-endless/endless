@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @since 0.0.1
  */
 public class ConstantResource {
-    public final static Integer PAGE_SIZE = 100;
+    public final static Integer PAGE_SIZE = 1000;
     public final static Integer CURSOR_BATCH_SIZE = 100;
 
     public final static String REGION_ID = "10000002";

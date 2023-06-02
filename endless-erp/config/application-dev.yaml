@@ -7,12 +7,12 @@ spring:
       thread-name-prefix: "Base-Thread-Pool-"
       core-pool-size: 20
       max-pool-size: 40
-      queue-capacity: 2000
+      queue-capacity: 1000
     game-eve-thread-pool:
       thread-name-prefix: "Game-EVE-Thread-Pool-"
-      core-pool-size: 20
-      max-pool-size: 40
-      queue-capacity: 2000
+      core-pool-size: 10
+      max-pool-size: 10
+      queue-capacity: 1000
 
 
   data:

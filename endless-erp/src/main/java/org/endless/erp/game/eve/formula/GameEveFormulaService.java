@@ -25,17 +25,16 @@ import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 @Service
 public class GameEveFormulaService implements FormulaService {
 
+    private final GameEveAsyncTask asyncTask;
 
-    private final GameEveAsyncTask gameEveAsyncTask;
-
-    private final GameEveFormulaRepositoryBase formulaJpaRepository;
+    private final GameEveFormulaRepository formulaRepository;
 
     public GameEveFormulaService(
-            @Qualifier("gameEveFormulaLoadTask") GameEveAsyncTask gameEveAsyncTask,
-            GameEveFormulaRepositoryBase formulaJpaRepository) {
+            @Qualifier("gameEveFormulaLoadTask") GameEveAsyncTask asyncTask,
+            GameEveFormulaRepository formulaRepository) {
 
-        this.gameEveAsyncTask = gameEveAsyncTask;
-        this.formulaJpaRepository = formulaJpaRepository;
+        this.asyncTask = asyncTask;
+        this.formulaRepository = formulaRepository;
     }
 
 
@@ -67,13 +66,13 @@ public class GameEveFormulaService implements FormulaService {
 
                 log.debug("scannerMap size: " + scannerMaps.get(index).size() + "  scannerMap index: " + index);
 
-                gameEveAsyncTask.run(scannerMaps.get(index));
+                asyncTask.run(scannerMaps.get(index));
                 scannerMaps.add(new ArrayList<>());
                 index++;
             }
         }
         log.debug("scannerMap size: " + scannerMaps.get(index).size() + "  scannerMap index: " + index);
-        gameEveAsyncTask.run(scannerMaps.get(index));
+        asyncTask.run(scannerMaps.get(index));
 
         log.info("GameEveFormulaService loaded executed!");
         log.debug("main thread cost : " + (System.currentTimeMillis() - begin));
@@ -109,19 +108,19 @@ public class GameEveFormulaService implements FormulaService {
 
                 log.debug("scannerMap size: " + scannerMaps.get(index).size() + "  scannerMap index: " + index);
 
-                gameEveAsyncTask.run(scannerMaps.get(index), categories);
+                asyncTask.run(scannerMaps.get(index), categories);
                 scannerMaps.add(new ArrayList<>());
                 index++;
             }
         }
         log.debug("scannerMap size: " + scannerMaps.get(index).size() + "  scannerMap index: " + index);
-        gameEveAsyncTask.run(scannerMaps.get(index), categories);
+        asyncTask.run(scannerMaps.get(index), categories);
 
         log.info("GameEveFormulaService loaded planet executed!");
         log.debug("main thread cost : " + (System.currentTimeMillis() - begin));
     }
 
     public List<GameEveFormula> getAll() {
-        return formulaJpaRepository.findAll();
+        return formulaRepository.findAll();
     }
 }

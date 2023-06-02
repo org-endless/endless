@@ -28,12 +28,12 @@ public class GameEveMarketOrderService implements OrderService {
 
     private final MongoOperations mongoOperations;
 
-    private final GameEveMarketOrderRepositoryBase gameEveMarketOrderJpaRepository;
+    private final GameEveMarketOrderRepository gameEveMarketOrderJpaRepository;
 
     public GameEveMarketOrderService(
             GameEveMarketOrderAdapter gameEveMarketOrderAdapter,
             @Qualifier("gameEveMarketOrderLoadTask") GameEveAsyncTask gameEveAsyncTask,
-            MongoOperations mongoOperations, GameEveMarketOrderRepositoryBase gameEveMarketOrderJpaRepository) {
+            MongoOperations mongoOperations, GameEveMarketOrderRepository gameEveMarketOrderJpaRepository) {
 
         this.gameEveMarketOrderAdapter = gameEveMarketOrderAdapter;
         this.gameEveAsyncTask = gameEveAsyncTask;

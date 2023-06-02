@@ -11,11 +11,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * GameEveItem for EVE
+ * GameEveItem
+ * <p>游戏EVE物品/商品类，映射数据文档game.eve.item
+ * <p>Game EVE item class mapping the data document named game.eve.item.
+ * <p>
+ * <p>create 2023/03/07 1:28
+ * <p>update 2023/05/28 00:35
  *
  * @author Deng Haozhi
- * @date 2023/3/7 1:28
- * @since 0.0.2
+ * @see Item
+ * @since 0.0.3
  */
 
 @Data

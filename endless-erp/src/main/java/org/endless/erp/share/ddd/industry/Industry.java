@@ -64,4 +64,6 @@ public class Industry {
      * 更新时间戳
      */
     private long updateTimeStamp;
+    
+    public static final String GAME_EVE = "game.eve";
 }

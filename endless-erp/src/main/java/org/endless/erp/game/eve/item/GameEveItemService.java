@@ -7,6 +7,7 @@ import org.endless.erp.share.ddd.item.ItemService;
 import org.endless.erp.share.util.file.FileLoader;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,36 +19,46 @@ import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * GameEveItemService
+ * 游戏EVE物品/商品服务类
+ * <p>Game EVE item services.
+ * <p>
+ * <p>create 2023/03/07 1:28
+ * <p>update 2023/05/28 00:31
  *
  * @author Deng Haozhi
- * @date 2023/3/7 1:28
- * @since 0.0.2
+ * @see ItemService
+ * @since 0.0.3
  */
 @Log4j2
-@Service
+@Service("gameEveItemService")
 public class GameEveItemService implements ItemService {
 
-    private final @Qualifier("GameEveItemLoadTask") GameEveAsyncTask gameEveAsyncTask;
+    private final GameEveAsyncTask asyncTask;
 
-    private final GameEveItemRepository gameEveItemJpaRepository;
+    private final GameEveItemRepository itemRepository;
 
-    public GameEveItemService(@Qualifier("gameEveItemLoadTask") GameEveAsyncTask gameEveAsyncTask, GameEveItemRepository gameEveItemJpaRepository) {
-        this.gameEveAsyncTask = gameEveAsyncTask;
-        this.gameEveItemJpaRepository = gameEveItemJpaRepository;
+    public GameEveItemService(
+            @Qualifier("gameEveItemLoadTask") GameEveAsyncTask asyncTask,
+            GameEveItemRepository itemRepository) {
+        this.asyncTask = asyncTask;
+        this.itemRepository = itemRepository;
     }
 
-
+    /**
+     * 加载游戏EVE物品/商品数据文件
+     * <p>Load the game EVE item data file.
+     *
+     * @param file 文件路径 (File path)
+     */
     @Override
     public final <T> void load(T file) {
 
-        var begin = System.currentTimeMillis();
-        log.info("Loading!");
-        log.debug("Load main thread begin: " + begin);
+        log.debug("Thread: " + Thread.currentThread().getName() + " load executing");
 
         var scanner = FileLoader.getScanner(String.valueOf(file), GameEvePattern.getFile());
 
         if (scanner == null) {
-            log.error("Loaded failed!");
+            log.error("File loaded failed!");
             return;
         }
 
@@ -65,15 +76,14 @@ public class GameEveItemService implements ItemService {
 
                 log.debug("scannerMap size: " + scannerMaps.get(index).size() + "  scannerMap index: " + index);
 
-                gameEveAsyncTask.run(scannerMaps.get(index));
+                asyncTask.run(scannerMaps.get(index));
                 scannerMaps.add(new ArrayList<>());
                 index++;
             }
         }
-        gameEveAsyncTask.run(scannerMaps.get(index));
+        asyncTask.run(scannerMaps.get(index));
 
-        log.info("GameEveItemService executed!");
-        log.debug("main thread cost : " + (System.currentTimeMillis() - begin));
+        log.info("Thread: " + Thread.currentThread().getName() + " load executed completely!");
     }
 
     // public List<Map<String, String>> getTradingList() {
@@ -135,17 +145,28 @@ public class GameEveItemService implements ItemService {
     //     return gameEveItems.stream().filter(item -> item.getItemId().equals(itemId)).map(GameEveItem::getPrice).map(Price::getCurPrice).filter(Objects::nonNull).findFirst().orElse(null);
     // }
 
-    public Stream<GameEveItem> getItemIdsStreamByPublished(Pageable pageable) {
-        return gameEveItemJpaRepository.findItemIdsStreamByPublished(pageable);
+    /**
+     * 分页查询并生成已发布的物品/商品编号数据流
+     * <p>Query and generate a published item id data stream pageable.
+     *
+     * @param pageable 分页
+     * @return {@link Stream}<{@link GameEveItem}>
+     */
+    public Slice<GameEveItem> findItemIdSliceByPublished(Pageable pageable) {
+        return itemRepository.findItemIdSliceByPublished(pageable);
     }
 
+
+    /**
+     * 查询并计算已发布的物品/商品数量
+     * <p>Query and calculate the number of items that have been released.
+     *
+     * @return long
+     */
     public long countByPublished() {
-        return gameEveItemJpaRepository.countByPublished();
+        return itemRepository.countByPublished();
     }
 
-    public GameEveItem getItemByItemId(String itemId) {
-        return gameEveItemJpaRepository.findById(itemId).orElse(null);
-    }
     //
     // public List<GameEveItem> getItemsByPublished(Boolean published) {
     //     return gameEveItemJpaRepository.findByPublished(published);
@@ -172,4 +193,5 @@ public class GameEveItemService implements ItemService {
     // public long getCountByPublished(Boolean published) {
     //     return gameEveItemJpaRepository.countByPublished(published);
     // }
+
 }

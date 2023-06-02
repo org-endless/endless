@@ -1,15 +1,17 @@
 package org.endless.erp.game.eve.market.order;
 
 import org.endless.erp.share.mongo.base.BaseMongoRepository;
+import org.springframework.stereotype.Repository;
 
 /**
- * GameEveMarketOrderRepositoryBase
+ * GameEveMarketOrderRepository
  *
  * @author Deng Haozhi
  * @date 2023/4/10 19:36
  * @since 0.0.2
  */
-public interface GameEveMarketOrderRepositoryBase extends BaseMongoRepository<GameEveMarketOrder, String> {
+@Repository
+public interface GameEveMarketOrderRepository extends BaseMongoRepository<GameEveMarketOrder, String> {
 
     // List<GameEveMarketOrder> findByItemId(String typeId);
     //

@@ -1,8 +1,9 @@
 package org.endless.erp.game.eve.market.saleHistory;
 
 import lombok.extern.log4j.Log4j2;
+import org.endless.erp.game.eve.item.GameEveItem;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
-import org.endless.erp.share.mongo.bulk.BulkMongoRepositoryImpl;
+import org.endless.erp.share.mongo.bulk.BulkMongoRepository;
 import org.endless.erp.share.util.date.DateFormatter;
 import org.endless.erp.share.util.decimal.Decimal;
 import org.endless.erp.share.util.object.ObjectToMongoObject;
@@ -11,10 +12,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static org.endless.erp.share.ddd.industry.Industry.GAME_EVE;
 
 /**
  * GameEveMarketSaleHistorySaveTask
@@ -30,58 +34,57 @@ import java.util.Map;
 @Component("gameEveMarketSaleHistoryTask")
 public class GameEveMarketSaleHistorySaveTask implements GameEveAsyncTask {
 
-    private final GameEveMarketSaleHistoryAdapter gameEveMarketSaleHistoryAdapter;
+    private final GameEveMarketSaleHistoryAdapter marketSaleHistoryAdapter;
 
-    private final BulkMongoRepositoryImpl bulkMongoRepository;
+    private final BulkMongoRepository bulkRepository;
 
-    public GameEveMarketSaleHistorySaveTask(GameEveMarketSaleHistoryAdapter gameEveMarketSaleHistoryAdapter, BulkMongoRepositoryImpl bulkMongoRepository) {
-        this.gameEveMarketSaleHistoryAdapter = gameEveMarketSaleHistoryAdapter;
-        this.bulkMongoRepository = bulkMongoRepository;
+    public GameEveMarketSaleHistorySaveTask(GameEveMarketSaleHistoryAdapter marketSaleHistoryAdapter, BulkMongoRepository bulkRepository) {
+        this.marketSaleHistoryAdapter = marketSaleHistoryAdapter;
+        this.bulkRepository = bulkRepository;
     }
 
+
     @Override
-    public <T> void run(T itemId) {
+    public <T> void run(T items) {
 
-        long begin = System.currentTimeMillis();
-        log.debug("Thread: " + Thread.currentThread().getName() + " saving begin: " + begin);
+        log.debug("Thread: " + Thread.currentThread().getName() + " save executing");
 
-        var historyList = gameEveMarketSaleHistoryAdapter.getHistory(String.valueOf(itemId));
-
-        if (historyList == null || historyList.isEmpty()) {
-            log.debug("Get NOTHING from the itemId " + itemId);
+        if (CollectionUtils.isEmpty((List<?>) items)) {
+            log.error("This page has no itemIds!");
             return;
         }
+        ((List<?>) items).forEach(item -> {
+            var itemId = ((GameEveItem) item).getItemId();
+            var historyList = marketSaleHistoryAdapter.getHistory(itemId);
+            if (CollectionUtils.isEmpty(historyList)) {
+                log.debug("The itemId: " + itemId + " get no data from ESI!");
+                return;
+            }
+            List<Pair<Query, Update>> pairs = new ArrayList<>();
 
-        List<Pair<Query, Update>> pairs = new ArrayList<>();
-        var industryId = "game.eve";
+            historyList.forEach(history -> {
+                var rat = (Map<?, ?>) ObjectToMongoObject.convert(history);
+                var date = rat.get("date");
+                var id = GAME_EVE + "_" + date + "_" + itemId;
+                var minPrice = Decimal.format(rat.get("lowest"));
+                var maxPrice = Decimal.format(rat.get("highest"));
+                var averagePrice = Decimal.average(List.of(minPrice, maxPrice));
 
-        historyList.forEach(history -> {
-
-            var rat = (Map<?, ?>) ObjectToMongoObject.convert(history);
-            var date = rat.get("date");
-
-            var id = industryId + "_" + date + "_" + itemId;
-            var minPrice = Decimal.format(rat.get("lowest"));
-            var maxPrice = Decimal.format(rat.get("highest"));
-            var averagePrice = Decimal.average(List.of(minPrice, maxPrice));
-
-            var query = Query.query(Criteria.where("id").is(id));
-            var update = Update.update("itemId", itemId)
-                    .set("industryId", industryId)
-                    .set("date", date)
-                    .set("price.minPrice", minPrice)
-                    .set("price.maxPrice", maxPrice)
-                    .set("price.averagePrice", averagePrice)
-                    .set("totalQuantity", Decimal.format(rat.get("volume")))
-                    .set("orderQuantity", Decimal.format(rat.get("order_count")))
-                    .set("updateDateTime", DateFormatter.nowIso())
-                    .set("updateTimeStamp", System.currentTimeMillis());
-            pairs.add(Pair.of(query, update));
+                var query = Query.query(Criteria.where("id").is(id));
+                var update = Update.update("itemId", itemId)
+                        .set("industryId", GAME_EVE)
+                        .set("date", date)
+                        .set("price.minPrice", minPrice)
+                        .set("price.maxPrice", maxPrice)
+                        .set("price.averagePrice", averagePrice)
+                        .set("totalQuantity", Decimal.format(rat.get("volume")))
+                        .set("orderQuantity", Decimal.format(rat.get("order_count")))
+                        .set("updateDateTime", DateFormatter.nowIso())
+                        .set("updateTimeStamp", System.currentTimeMillis());
+                pairs.add(Pair.of(query, update));
+            });
+            bulkRepository.upsert(pairs, GameEveMarketSaleHistory.class);
         });
-        bulkMongoRepository.upsert(pairs, GameEveMarketSaleHistory.class);
-
-        long end = System.currentTimeMillis();
-        log.debug("Thread: " + Thread.currentThread().getName() + " saving end: " + end);
-        log.info("Thread: " + Thread.currentThread().getName() + " saved completed!");
+        log.info("Thread: " + Thread.currentThread().getName() + " save executed completely!");
     }
 }

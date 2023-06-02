@@ -1,9 +1,6 @@
 package org.endless.erp.game.eve.price;
 
-import org.endless.erp.game.eve.item.GameEveItemService;
-import org.endless.erp.game.eve.market.order.GameEveMarketOrderService;
 import org.endless.erp.share.ddd.price.PriceServer;
-import org.endless.erp.share.mongo.bulk.BulkMongoRepository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,17 +13,17 @@ import org.springframework.stereotype.Service;
 @Service("gameEvePriceService")
 public class GameEvePriceService implements PriceServer {
 
-    private final BulkMongoRepository bulkMongoRepository;
-
-    private final GameEveItemService gameEveItemService;
-
-    private final GameEveMarketOrderService gameEveMarketOrderService;
-
-    public GameEvePriceService(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, GameEveMarketOrderService gameEveMarketOrderService) {
-        this.bulkMongoRepository = bulkMongoRepository;
-        this.gameEveItemService = gameEveItemService;
-        this.gameEveMarketOrderService = gameEveMarketOrderService;
-    }
+    // private final BulkMongoRepository bulkMongoRepository;
+    //
+    // private final GameEveItemService gameEveItemService;
+    //
+    // private final GameEveMarketOrderService gameEveMarketOrderService;
+    //
+    // public GameEvePriceService(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, GameEveMarketOrderService gameEveMarketOrderService) {
+    //     this.bulkMongoRepository = bulkMongoRepository;
+    //     this.gameEveItemService = gameEveItemService;
+    //     this.gameEveMarketOrderService = gameEveMarketOrderService;
+    // }
 
     // @Override
     // public void update() {

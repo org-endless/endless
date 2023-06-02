@@ -25,7 +25,7 @@ public class RestConfiguration {
 
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
         factory.setReadTimeout(5000);
-        factory.setConnectTimeout(15000);
+        factory.setConnectTimeout(5000);
         return factory;
     }
 }

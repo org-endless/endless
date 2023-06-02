@@ -25,7 +25,7 @@ public class GameEveMarketSaleHistoryController {
     @GetMapping("/save")
     @PostMapping("/save")
     @ResponseBody
-    public String regionOrders() {
+    public String save() {
         try {
             gameEveMarketSaleHistoryService.save();
             return "success";

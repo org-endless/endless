@@ -13,7 +13,7 @@ class GameEveItemServiceTest {
 
     @Test
     void test() {
-        System.out.println(gameEveItemService.countByPublished());
+        // System.out.println(gameEveItemService.findItemIdSliceByPublished().map(GameEveItem::getItemId).findFirst());
     }
 
 }

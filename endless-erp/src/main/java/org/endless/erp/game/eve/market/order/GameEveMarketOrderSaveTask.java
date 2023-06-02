@@ -3,7 +3,7 @@ package org.endless.erp.game.eve.market.order;
 import lombok.extern.log4j.Log4j2;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
 import org.endless.erp.share.ddd.order.Order;
-import org.endless.erp.share.mongo.bulk.BulkMongoRepositoryImpl;
+import org.endless.erp.share.mongo.bulk.BulkMongoRepository;
 import org.endless.erp.share.util.date.DateFormatter;
 import org.endless.erp.share.util.decimal.Decimal;
 import org.endless.erp.share.util.object.ObjectToMongoObject;
@@ -12,10 +12,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static org.endless.erp.share.ddd.industry.Industry.GAME_EVE;
 
 /**
  * GameEveMarketOrderSaveTask
@@ -30,14 +33,15 @@ import java.util.Map;
 @Component("gameEveMarketOrderLoadTask")
 public class GameEveMarketOrderSaveTask implements GameEveAsyncTask {
 
-    private final GameEveMarketOrderAdapter gameEveMarketOrderAdapter;
+    private final GameEveMarketOrderAdapter marketOrderAdapter;
 
-    private final BulkMongoRepositoryImpl bulkMongoRepository;
+    private final BulkMongoRepository bulkRepository;
 
-    public GameEveMarketOrderSaveTask(GameEveMarketOrderAdapter gameEveMarketOrderAdapter, BulkMongoRepositoryImpl bulkMongoRepository) {
-        this.gameEveMarketOrderAdapter = gameEveMarketOrderAdapter;
-        this.bulkMongoRepository = bulkMongoRepository;
+    public GameEveMarketOrderSaveTask(GameEveMarketOrderAdapter marketOrderAdapter, BulkMongoRepository bulkRepository) {
+        this.marketOrderAdapter = marketOrderAdapter;
+        this.bulkRepository = bulkRepository;
     }
+
 
     @Override
     public <T> void run(T page) {
@@ -45,25 +49,24 @@ public class GameEveMarketOrderSaveTask implements GameEveAsyncTask {
         long begin = System.currentTimeMillis();
         log.debug("Thread: " + Thread.currentThread().getName() + " loading begin: " + begin);
 
-        var orderList = gameEveMarketOrderAdapter.getOrders(Integer.parseInt(String.valueOf(page)));
+        var orderList = marketOrderAdapter.getOrders(Integer.parseInt(String.valueOf(page)));
 
-        if (orderList == null || orderList.isEmpty()) {
+        if (CollectionUtils.isEmpty(orderList)) {
             log.error("Get NOTHING from the page " + page);
             return;
         }
 
         List<Pair<Query, Update>> pairs = new ArrayList<>();
-        var industryId = "game.eve";
 
         orderList.forEach(order -> {
 
             var rat = (Map<?, ?>) ObjectToMongoObject.convert(order);
             var orderId = String.valueOf(rat.get("order_id"));
-            var id = industryId + "_" + orderId;
+            var id = GAME_EVE + "_" + orderId;
 
             var query = Query.query(Criteria.where("id").is(id));
             var update = Update.update("orderId", orderId)
-                    .set("industryId", industryId)
+                    .set("industryId", GAME_EVE)
                     .set("itemId", rat.get("type_id"))
                     .set("categories", ((Boolean) rat.get("is_buy_order")) ? Order.Categories.purchase : Order.Categories.sale)
                     .set("minPurchaseQuantity", Decimal.format(rat.get("min_volume")))
@@ -76,7 +79,7 @@ public class GameEveMarketOrderSaveTask implements GameEveAsyncTask {
 
             pairs.add(Pair.of(query, update));
         });
-        bulkMongoRepository.upsert(pairs, GameEveMarketOrder.class);
+        bulkRepository.upsert(pairs, GameEveMarketOrder.class);
 
         long end = System.currentTimeMillis();
         log.debug("Thread: " + Thread.currentThread().getName() + " loading end: " + end);

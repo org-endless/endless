@@ -13,7 +13,11 @@ import java.util.List;
 
 /**
  * BulkMongoUpsertTask
+ * <p>MongoDB批量更新插入操作异步任务
+ * <p>MongoDB bulk upsert asynchronous task.
+ * <p>
  * <p>create 2023/05/25 21:51
+ * <p>update 2023/05/27 19:50
  *
  * @author Deng Haozhi
  * @see BaseAsyncTask
@@ -29,11 +33,17 @@ public class BulkMongoUpsertTask implements BaseAsyncTask {
         this.mongoOperations = mongoOperations;
     }
 
+    /**
+     * 运行MongoDB批量更新插入操作异步任务
+     * <p>Run the Mongo DB bulk upsert asynchronous task.
+     *
+     * @param pairs       定义Query和Update的List (Define a List of Query and Update.)
+     * @param entityClass 进行操作的实体类 (The entity class that operates.)
+     */
     @Override
     public void run(List<Pair<Query, Update>> pairs, Class<?> entityClass) {
-        long begin = System.currentTimeMillis();
-        log.debug("Upsert task running!");
-        log.debug("Thread: " + Thread.currentThread().getName() + " upsert begin: " + begin);
+
+        log.debug("Thread: " + Thread.currentThread().getName() + " upsert for >" + entityClass.getName() + "< executing");
 
         var bulkOps = mongoOperations.bulkOps(BulkOperations.BulkMode.UNORDERED, entityClass);
 
@@ -41,10 +51,9 @@ public class BulkMongoUpsertTask implements BaseAsyncTask {
             bulkOps.upsert(pairs);
             var result = bulkOps.execute();
 
-            long end = System.currentTimeMillis();
-            log.debug("Upsert task executed! The result is: " + result);
-            log.debug("Thread: " + Thread.currentThread().getName() + " upsert end: " + end);
-            log.debug("Thread: " + Thread.currentThread().getName() + " upsert completed!");
+            log.debug("Thread: " + Thread.currentThread().getName() + " upsert for >" + entityClass.getName() + "< executed!");
+            log.trace("The result is: " + result);
+
         } catch (Exception e) {
             log.error(e.getMessage());
         }

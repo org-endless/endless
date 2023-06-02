@@ -30,10 +30,10 @@ import java.util.Map;
 @Component("gameEveFormulaLoadTask")
 public class GameEveFormulaLoadTask implements GameEveAsyncTask {
 
-    private final BulkMongoRepository bulkMongoRepository;
+    private final BulkMongoRepository bulkRepository;
 
-    public GameEveFormulaLoadTask(BulkMongoRepository bulkMongoRepository) {
-        this.bulkMongoRepository = bulkMongoRepository;
+    public GameEveFormulaLoadTask(BulkMongoRepository bulkRepository) {
+        this.bulkRepository = bulkRepository;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class GameEveFormulaLoadTask implements GameEveAsyncTask {
             }
         });
         log.trace(pairs);
-        bulkMongoRepository.upsert(pairs, GameEveFormula.class);
+        bulkRepository.upsert(pairs, GameEveFormula.class);
 
         long end = System.currentTimeMillis();
         log.debug("Thread: " + Thread.currentThread().getName() + " loading end: " + end);
@@ -150,7 +150,7 @@ public class GameEveFormulaLoadTask implements GameEveAsyncTask {
             pairs.add(Pair.of(query, update));
         });
         log.trace(pairs);
-        bulkMongoRepository.upsert(pairs, GameEveFormula.class);
+        bulkRepository.upsert(pairs, GameEveFormula.class);
 
         long end = System.currentTimeMillis();
         log.debug("Thread: " + Thread.currentThread().getName() + " loading end: " + end);

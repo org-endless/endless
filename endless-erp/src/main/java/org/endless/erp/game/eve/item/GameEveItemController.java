@@ -10,20 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * GameEveItemController
+ * <p>游戏EVE物品/商品视图控制器
+ * <p>Game EVE item view controller
+ * <p>
+ * <p>create 2023/03/12 22:20
+ * <p>update 2023/05/28 00:34
  *
  * @author Deng Haozhi
- * @date 2023/3/12 22:20
- * @since 0.0.2
+ * @since 0.0.3
  */
 @Log4j2
 @RestController
 @RequestMapping("/game/eve/item")
 public class GameEveItemController {
 
-    @Qualifier("GameEveItemService")
     private final ItemService itemService;
 
-    public GameEveItemController(ItemService itemService) {
+    public GameEveItemController(@Qualifier("gameEveItemService") ItemService itemService) {
         this.itemService = itemService;
     }
 
