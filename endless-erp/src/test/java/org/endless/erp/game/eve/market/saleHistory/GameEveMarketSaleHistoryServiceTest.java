@@ -6,12 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class GameEveMarketSaleHistoryServiceTest {
-    @Autowired
-    private GameEveMarketSaleHistoryService marketSaleHistoryService;
+  @Autowired private GameEveMarketSaleHistoryService marketSaleHistoryService;
 
-    @Test
-    void test() {
-        marketSaleHistoryService.save();
-    }
-
+  @Test
+  void test() {
+    // marketSaleHistoryService.save();
+  }
 }

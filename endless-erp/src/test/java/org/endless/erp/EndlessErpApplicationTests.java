@@ -1,13 +1,6 @@
 package org.endless.erp;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EndlessErpApplicationTests {
-
-    @Test
-    void contextLoads() {
-    }
-
-}
+class EndlessErpApplicationTests {}

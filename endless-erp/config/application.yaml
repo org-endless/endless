@@ -1,5 +1,7 @@
 # spring boot 配置
 spring:
+  main:
+    lazy-initialization: true
   devtools:
     restart:
       enabled: true
