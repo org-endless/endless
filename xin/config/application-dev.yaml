@@ -1,0 +1,44 @@
+server:
+  port: 80
+
+spring:
+  task:
+    base-thread-pool:
+      thread-name-prefix: "Base-Thread-Pool-"
+      core-pool-size: 20
+      max-pool-size: 40
+      queue-capacity: 1000
+    game-eve-thread-pool:
+      thread-name-prefix: "Game-EVE-Thread-Pool-"
+      core-pool-size: 10
+      max-pool-size: 10
+      queue-capacity: 1000
+
+
+  data:
+    mongodb:
+      uri: mongodb://erp:erppassw0rd@1.15.236.69:30017/endless-erp
+      host: "1.15.236.69"
+      port: 27017
+      database: "endless-erp"
+      username: "erp"
+      password: "erppassw0rd"
+#      pool:
+#        # Sets the maximum time a pooled connection can be alive before it's closed.
+#        max-connection-life-time: 0
+#        # Sets the minimum amount of connections associated with a connection pool.
+#        min-size: 10
+#        # Sets the maximum amount of connections associated with a connection pool.
+#        max-size: 100
+#        # MILLISECONDS
+#        # Sets the maximum time to wait for an available connection.
+#        max-wait-time: 10000
+#        # Sets the maximum time a connection can be idle before it's closed.
+#        max-connection-idle-time: 60000
+#        maintenance:
+#          # Sets the frequency for running a maintenance job.
+#          frequency: 0
+#          # Sets the time to wait before running the first maintenance job.
+#          initial-delay: 0
+logging:
+  config: file:config/log4j2-dev.xml

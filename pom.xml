@@ -25,11 +25,13 @@
     </developers>
 
     <modules>
-        <module>data/endless-data-spring-mongodb</module>
-        <module>endless-erp</module>
         <module>comm/endless-comm-feign</module>
+        <module>data/endless-data-spring-mongodb</module>
         <module>demo/java-demo</module>
         <module>demo/go-demo</module>
+        <module>endless-erp</module>
+        <module>pluto</module>
+        <module>xin</module>
     </modules>
 
     <properties>
