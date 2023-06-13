@@ -4,9 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.endless</groupId>
     <artifactId>endless</artifactId>
-    <version>0.0.3</version>
-    <packaging>pom</packaging>
     <name>endless</name>
+    <version>0.0.3</version>
     <description>Endless Build</description>
     <url>https://github.com/org-endless/endless</url>
     <licenses>
@@ -24,14 +23,16 @@
         </developer>
     </developers>
 
+    <packaging>pom</packaging>
     <modules>
         <module>comm/endless-comm-feign</module>
         <module>data/endless-data-spring-mongodb</module>
         <module>demo/java-demo</module>
         <module>demo/go-demo</module>
-        <module>endless-erp</module>
-        <module>pluto</module>
-        <module>xin</module>
+        <module>fanli</module>
+        <module>xishi</module>
+        <module>yulei</module>
+        <module>yangming</module>
     </modules>
 
     <properties>
