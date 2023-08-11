@@ -6,11 +6,11 @@
     <parent>
         <groupId>org.endless</groupId>
         <artifactId>endless</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
     </parent>
 
     <artifactId>zhenghe</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <name>zhenghe</name>
     <description>Zheng He.</description>
 

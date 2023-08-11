@@ -8,27 +8,19 @@
         <version>0.0.4</version>
     </parent>
 
-    <artifactId>fanli</artifactId>
-    <name>fanli</name>
+    <artifactId>nvwa-spring-boot-starter</artifactId>
     <version>0.0.4</version>
-    <description>God of wealth named FanLi.</description>
+    <name>nvwa-spring-boot-starter</name>
+    <description>Nvwa, goddess of creation in China.</description>
 
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- endless dependencies -->
-        <dependency>
-            <groupId>org.endless</groupId>
-            <artifactId>nvwa-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.endless</groupId>
-            <artifactId>huangce-spring-boot-starter</artifactId>
-        </dependency>
         <!-- framework -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <optional>true</optional>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -38,42 +30,34 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-        <!-- tools -->
+        <!-- Autoconfigure  -->
         <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <!-- For dev -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
         <!-- For test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <optional>true</optional>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -83,7 +67,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.endless.erp.ErpApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -91,13 +74,6 @@
                         </exclude>
                     </excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

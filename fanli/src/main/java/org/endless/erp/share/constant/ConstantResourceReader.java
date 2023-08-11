@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @ToString
-@PropertySource(value = {"file:config/constant.conf"})
+@PropertySource(value = {"file:configure/constant.conf"})
 public class ConstantResourceReader {
 
     public static String ID_REGULAR;
