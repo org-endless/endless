@@ -1,12 +1,13 @@
 package org.endless.erp.share.ddd.profit;
 
 import jakarta.validation.constraints.Pattern;
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.endless.erp.share.pattern.Regular;
 import org.springframework.validation.annotation.Validated;
+
+import java.math.BigDecimal;
 
 /**
  * @author Deng Haozhi
@@ -19,27 +20,27 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class Profit {
 
-  @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-  private BigDecimal manufacturingProfit;
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal manufacturingProfit;
 
-  private BigDecimal manufacturingProfitMargin;
+    private BigDecimal manufacturingProfitMargin;
 
-  @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-  private BigDecimal manufacturingProfitPerDay;
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal manufacturingProfitPerDay;
 
-  @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-  private BigDecimal manufacturingProcurementProfit;
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal manufacturingProcurementProfit;
 
-  private BigDecimal manufacturingProcurementProfitMargin;
+    private BigDecimal manufacturingProcurementProfitMargin;
 
-  @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-  private BigDecimal manufacturingProcurementProfitPerDay;
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal manufacturingProcurementProfitPerDay;
 
-  @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-  private BigDecimal tradingProfit;
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal tradingProfit;
 
-  private BigDecimal tradingProfitMargin;
+    private BigDecimal tradingProfitMargin;
 
-  @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
-  private BigDecimal tradingProfitPerDay;
+    @Pattern(regexp = Regular.DECIMAL, message = Regular.DECIMAL_MESSAGE)
+    private BigDecimal tradingProfitPerDay;
 }

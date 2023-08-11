@@ -13,7 +13,19 @@
     <version>0.0.3</version>
     <description>God of wealth named FanLi.</description>
 
+    <packaging>jar</packaging>
+
     <dependencies>
+        <!-- endless dependencies -->
+        <dependency>
+            <groupId>org.endless</groupId>
+            <artifactId>nvwa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.endless</groupId>
+            <artifactId>simaqian</artifactId>
+        </dependency>
+        <!-- framework -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -23,10 +35,6 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,15 +52,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-indexer</artifactId>
-        </dependency>
+        <!-- tools -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
         </dependency>
-
         <!-- For dev -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -65,9 +69,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
         </dependency>
-
         <!-- For test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,11 +83,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.endless.erp.EndlessErpApplication</mainClass>
+                    <mainClass>org.endless.erp.ErpApplication</mainClass>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>repackage</id>
                         <goals>
                             <goal>repackage</goal>
                         </goals>

@@ -1,9 +1,10 @@
 package org.endless.erp.game.eve.profit;
 
-import java.math.BigDecimal;
+import org.endless.com.utiliy.decimal.Decimal;
 import org.endless.erp.game.eve.item.GameEveItem;
-import org.endless.erp.share.util.decimal.Decimal;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 /**
  * @author Deng Haozhi

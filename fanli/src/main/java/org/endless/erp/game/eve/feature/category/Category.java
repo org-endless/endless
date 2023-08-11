@@ -24,17 +24,17 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class Category {
 
-  @Id
-  @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
-  private String categoryId;
+    @Id
+    @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
+    private String categoryId;
 
-  private Name name;
+    private Name name;
 
-  private boolean published;
+    private boolean published;
 
-  @Pattern(regexp = Regular.DATE, message = Regular.DATE_MESSAGE)
-  private String updateDateTime;
+    @Pattern(regexp = Regular.DATE, message = Regular.DATE_MESSAGE)
+    private String updateDateTime;
 
-  @Pattern(regexp = Regular.TIME, message = Regular.TIME_MESSAGE)
-  private long updateTimeStamp;
+    @Pattern(regexp = Regular.TIME, message = Regular.TIME_MESSAGE)
+    private long updateTimeStamp;
 }

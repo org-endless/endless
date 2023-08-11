@@ -1,7 +1,5 @@
 package org.endless.erp.game.eve.market.saleHistory;
 
-import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
-
 import lombok.extern.log4j.Log4j2;
 import org.endless.erp.game.eve.item.GameEveItemService;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
@@ -10,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * GameEveMarketSaleHistoryService

@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @since 0.0.3
  */
 public class GameEvePattern {
-    public static Pattern getFile(){
+    public static Pattern getFile() {
         return GameEveRegular.get(GameEveRegular.EVE_YAML, GameEveRegular.EVE_YAML_FLAG);
     }
 }

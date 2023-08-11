@@ -12,11 +12,11 @@ import org.springframework.web.servlet.LocaleResolver;
 @Configuration
 public class BaseLocaleConfiguration {
 
-  /**
-   * @return org.springframework.web.servlet.BaseLocaleResolver
-   */
-  @Bean
-  public LocaleResolver localeResolver() {
-    return new BaseLocaleResolver();
-  }
+    /**
+     * @return org.springframework.web.servlet.BaseLocaleResolver
+     */
+    @Bean
+    public LocaleResolver localeResolver() {
+        return new BaseLocaleResolver();
+    }
 }

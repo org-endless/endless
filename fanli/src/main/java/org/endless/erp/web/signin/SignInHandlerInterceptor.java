@@ -21,50 +21,50 @@ import org.springframework.web.servlet.ModelAndView;
 @Log4j2
 public class SignInHandlerInterceptor implements HandlerInterceptor {
 
-  /**
-   * 前置拦截器，拦截未登录
-   *
-   * <p>Pre handler interceptor for sign in failed
-   *
-   * @param request HttpServletRequest
-   * @param response HttpServletResponse
-   * @param handler Object
-   * @return boolean
-   */
-  @Override
-  public boolean preHandle(
-      @NonNull HttpServletRequest request,
-      @NonNull HttpServletResponse response,
-      @NonNull Object handler)
-      throws Exception {
+    /**
+     * 前置拦截器，拦截未登录
+     *
+     * <p>Pre handler interceptor for sign in failed
+     *
+     * @param request  HttpServletRequest
+     * @param response HttpServletResponse
+     * @param handler  Object
+     * @return boolean
+     */
+    @Override
+    public boolean preHandle(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull Object handler)
+            throws Exception {
 
-    if (request.getSession().getAttribute("signInUser") == null) {
+        if (request.getSession().getAttribute("signInUser") == null) {
 
-      log.trace("The user is sign in FAILED");
-      request.setAttribute("isSignInFailed", true);
-      request.getRequestDispatcher("/signin").forward(request, response);
-      return false;
+            log.trace("The user is sign in FAILED");
+            request.setAttribute("isSignInFailed", true);
+            request.getRequestDispatcher("/signin").forward(request, response);
+            return false;
+        }
+        return true;
     }
-    return true;
-  }
 
-  @Override
-  public void postHandle(
-      @NonNull HttpServletRequest request,
-      @NonNull HttpServletResponse response,
-      @NonNull Object handler,
-      ModelAndView modelAndView)
-      throws Exception {
-    HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-  }
+    @Override
+    public void postHandle(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull Object handler,
+            ModelAndView modelAndView)
+            throws Exception {
+        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+    }
 
-  @Override
-  public void afterCompletion(
-      @NonNull HttpServletRequest request,
-      @NonNull HttpServletResponse response,
-      @NonNull Object handler,
-      Exception ex)
-      throws Exception {
-    HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
-  }
+    @Override
+    public void afterCompletion(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull Object handler,
+            Exception ex)
+            throws Exception {
+        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+    }
 }

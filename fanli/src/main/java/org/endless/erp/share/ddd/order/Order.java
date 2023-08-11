@@ -2,14 +2,16 @@ package org.endless.erp.share.ddd.order;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.endless.erp.share.pattern.Regular;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.validation.annotation.Validated;
+
+import java.math.BigDecimal;
 
 /**
  * Order
@@ -116,6 +118,7 @@ public class Order {
      * @see Enum
      * @since 0.0.3
      */
+    @Getter
     public enum Categories {
 
         sale("0", "sale", "出售"),
@@ -142,16 +145,5 @@ public class Order {
             this.zhInstruction = zhInstruction;
         }
 
-        public String getCategoriesId() {
-            return categoriesId;
-        }
-
-        public String getEnInstruction() {
-            return enInstruction;
-        }
-
-        public String getZhInstruction() {
-            return zhInstruction;
-        }
     }
 }

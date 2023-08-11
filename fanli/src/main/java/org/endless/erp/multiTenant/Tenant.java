@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("tenant")
 public class Tenant {
 
-  private String tenantId;
+    private String tenantId;
 
-  private String industryId;
+    private String industryId;
 }

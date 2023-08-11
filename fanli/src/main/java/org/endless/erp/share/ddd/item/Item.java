@@ -2,7 +2,6 @@ package org.endless.erp.share.ddd.item;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +16,8 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
+
+import java.math.BigDecimal;
 
 /**
  * Item

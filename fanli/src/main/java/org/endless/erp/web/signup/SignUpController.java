@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user/signup")
 public class SignUpController {
 
-  @GetMapping
-  @PostMapping
-  public String signUp() {
-    return "signup";
-  }
+    @GetMapping
+    @PostMapping
+    public String signUp() {
+        return "signup";
+    }
 }

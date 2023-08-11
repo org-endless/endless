@@ -1,9 +1,6 @@
 package org.endless.erp.game.eve.formula;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.endless.erp.share.ddd.formula.Formula;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
@@ -29,6 +26,7 @@ public class GameEveFormula extends Formula {
      */
     private Categories categories;
 
+    @Getter
     public enum Categories {
 
         manufacturing("0", "manufacturing", "制造"),
@@ -48,16 +46,5 @@ public class GameEveFormula extends Formula {
             this.zhInstruction = zhInstruction;
         }
 
-        public String getCategoriesId() {
-            return categoriesId;
-        }
-
-        public String getEnInstruction() {
-            return enInstruction;
-        }
-
-        public String getZhInstruction() {
-            return zhInstruction;
-        }
     }
 }

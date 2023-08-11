@@ -1,12 +1,13 @@
 package org.endless.erp.game.eve.share.thread;
 
-import java.util.concurrent.Executor;
-import org.endless.erp.share.thread.model.ThreadPoolConfiguration;
+import org.endless.com.thread.model.ThreadPoolConfiguration;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
+
+import java.util.concurrent.Executor;
 
 /**
  * BaseThreadPoolConfiguration

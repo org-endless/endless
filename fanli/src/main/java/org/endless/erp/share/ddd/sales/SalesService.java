@@ -14,9 +14,12 @@ package org.endless.erp.share.ddd.sales;
  */
 public interface SalesService {
 
-  default void update() {}
+    default void update() {
+    }
 
-  default <T> void update(T argument) {}
+    default <T> void update(T argument) {
+    }
 
-  default <T> void update(T[] arguments) {}
+    default <T> void update(T[] arguments) {
+    }
 }

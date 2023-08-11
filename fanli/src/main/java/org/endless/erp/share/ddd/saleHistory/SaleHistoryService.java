@@ -14,9 +14,12 @@ package org.endless.erp.share.ddd.saleHistory;
  */
 public interface SaleHistoryService {
 
-  default void save() {}
+    default void save() {
+    }
 
-  default <T> void save(T argument) {}
+    default <T> void save(T argument) {
+    }
 
-  default <T> void save(T[] arguments) {}
+    default <T> void save(T[] arguments) {
+    }
 }

@@ -17,12 +17,12 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://erp:erppassw0rd@1.15.236.69:30017/fanli
-      host: "1.15.236.69"
-      port: 27017
+      uri: mongodb://fanli:fanlipassw0rd@127.0.0.1:64958/fanli
+      host: "127.0.0.1"
+      port: 64958
       database: "fanli"
-      username: "erp"
-      password: "erppassw0rd"
+      username: "fanli"
+      password: "fanlipassw0rd"
 #      pool:
 #        # Sets the maximum time a pooled connection can be alive before it's closed.
 #        max-connection-life-time: 0

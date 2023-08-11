@@ -7,13 +7,10 @@
         <artifactId>endless</artifactId>
         <version>0.0.3</version>
     </parent>
-    <version>0.0.1</version>
     <artifactId>yulei</artifactId>
+    <version>0.0.3</version>
     <name>yulei</name>
     <description>God of security named YuLei.</description>
-    <properties>
-        <java.version>20</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -21,10 +18,15 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!-- For dev -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -32,15 +34,13 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- For test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

@@ -2,8 +2,6 @@ package org.endless.erp.share.ddd.formula;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
-import java.math.BigDecimal;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +9,9 @@ import org.endless.erp.share.pattern.Regular;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.validation.annotation.Validated;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Formula

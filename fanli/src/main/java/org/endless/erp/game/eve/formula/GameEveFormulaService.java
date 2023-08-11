@@ -1,17 +1,18 @@
 package org.endless.erp.game.eve.formula;
 
-import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
+import lombok.extern.log4j.Log4j2;
+import org.endless.com.utiliy.file.FileLoader;
+import org.endless.erp.game.eve.share.regular.GameEvePattern;
+import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
+import org.endless.erp.share.ddd.formula.FormulaService;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import lombok.extern.log4j.Log4j2;
-import org.endless.erp.game.eve.share.regular.GameEvePattern;
-import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
-import org.endless.erp.share.ddd.formula.FormulaService;
-import org.endless.erp.share.util.file.FileLoader;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+
+import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * GameEveFormulaService

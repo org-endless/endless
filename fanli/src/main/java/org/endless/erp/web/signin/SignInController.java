@@ -22,33 +22,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/user/signin")
 public class SignInController {
 
-  /**
-   * signIn
-   *
-   * @param username String
-   * @param password String
-   * @param model Model
-   * @param session HttpSession
-   * @return java.lang.String
-   */
-  @GetMapping
-  @PostMapping
-  public String signIn(
-      @RequestParam("username") String username,
-      @RequestParam("password") String password,
-      Model model,
-      HttpSession session) {
+    /**
+     * signIn
+     *
+     * @param username String
+     * @param password String
+     * @param model    Model
+     * @param session  HttpSession
+     * @return java.lang.String
+     */
+    @GetMapping
+    @PostMapping
+    public String signIn(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            Model model,
+            HttpSession session) {
 
-    if (StringUtils.hasText(username) && "123456".equals(password)) {
+        if (StringUtils.hasText(username) && "123456".equals(password)) {
 
-      log.debug("User: >>" + username + "<< is validated SUCCESS!");
-      session.setAttribute("signInUser", username);
-      return "dashboard";
-    } else {
+            log.debug("User: >>" + username + "<< is validated SUCCESS!");
+            session.setAttribute("signInUser", username);
+            return "dashboard";
+        } else {
 
-      log.debug("The user is validated FAILED!");
-      model.addAttribute("isValidationFailed", true);
-      return "signin";
+            log.debug("The user is validated FAILED!");
+            model.addAttribute("isValidationFailed", true);
+            return "signin";
+        }
     }
-  }
 }

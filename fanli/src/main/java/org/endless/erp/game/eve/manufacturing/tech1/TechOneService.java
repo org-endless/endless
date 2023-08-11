@@ -5,4 +5,5 @@ package org.endless.erp.game.eve.manufacturing.tech1;
  * @date 2023/5/12 16:03
  * @since
  */
-public class TechOneService {}
+public class TechOneService {
+}

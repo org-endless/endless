@@ -12,9 +12,9 @@ spring:
     format:
       # 日期格式化
       date: yyyy-MM-dd
-  thymeleaf:
-    # 关闭模板引擎缓存
-    cache: false
+    thymeleaf:
+      # 关闭模板引擎缓存
+      cache: false
   messages:
     # 国际化配置
     basename: i18n.message
@@ -25,29 +25,3 @@ server:
 
 # 可查看哪些自动配置类生效
 debug: false
-
-# 单yaml内多环境配置
-# 生产环境配置
----
-server:
-  port: 8180
-spring:
-  config:
-    activate:
-      on-profile: prod1
-# 开发环境配置
----
-server:
-  port: 8181
-spring:
-  config:
-    activate:
-      on-profile: dev1
-# 测试环境配置
----
-server:
-  port: 8182
-spring:
-  config:
-    activate:
-      on-profile: test1

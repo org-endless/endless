@@ -1,7 +1,8 @@
 package org.endless.erp.game.eve.share.regular;
 
-import java.util.regex.Pattern;
 import org.endless.erp.share.pattern.Regular;
+
+import java.util.regex.Pattern;
 
 /**
  * GameEveRegular

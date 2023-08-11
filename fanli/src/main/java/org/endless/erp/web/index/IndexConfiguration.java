@@ -1,5 +1,6 @@
 package org.endless.erp.web.index;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -12,11 +13,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @see WebMvcConfigurer
  * @since 0.0.1
  */
+@Log4j2
 @Configuration
 public class IndexConfiguration implements WebMvcConfigurer {
 
     /**
-     *
      * @param registry ViewControllerRegistry
      **/
     @Override

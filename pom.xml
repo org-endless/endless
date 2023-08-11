@@ -16,7 +16,7 @@
     </licenses>
     <developers>
         <developer>
-            <name>Endless</name>
+            <name>Deng Haozhi</name>
             <email>haozhi_deng@126.com</email>
             <organization>Endless, Org.</organization>
             <organizationUrl>https://github.com/org-endless</organizationUrl>
@@ -24,20 +24,17 @@
     </developers>
 
     <packaging>pom</packaging>
+
     <modules>
-        <module>comm/endless-comm-feign</module>
-        <module>data/endless-data-spring-mongodb</module>
-        <module>demo/java-demo</module>
-        <module>demo/go-demo</module>
+        <module>nvwa</module>
+        <module>simaqian</module>
         <module>fanli</module>
-        <module>xishi</module>
         <module>yulei</module>
-        <module>yangming</module>
+        <module>zhenghe</module>
     </modules>
 
     <properties>
-
-        <!-- Maven -->
+        <!-- Maven default -->
         <java.version>20</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -45,27 +42,41 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <!-- Dependencies -->
+        <!-- Dependencies version -->
+        <endless.version>0.0.3</endless.version>
+        <spring-boot.version>3.1.2</spring-boot.version>
         <jsr305.version>3.0.2</jsr305.version>
-        <lombok.version>1.18.28</lombok.version>
         <snakeyaml.version>2.0</snakeyaml.version>
         <jackson.version>2.15.1</jackson.version>
-        <reactor-test.version>3.5.6</reactor-test.version>
-        <junit-jupiter-api.version>5.10.0-M1</junit-jupiter-api.version>
-        <spring-boot.version>3.1.0</spring-boot.version>
+        <lombok.version>1.18.28</lombok.version>
     </properties>
 
     <dependencyManagement>
+        <!-- endless dependencies -->
         <dependencies>
+            <dependency>
+                <groupId>org.endless</groupId>
+                <artifactId>simaqian</artifactId>
+                <version>${endless.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.endless</groupId>
+                <artifactId>nvwa</artifactId>
+                <version>${endless.version}</version>
+            </dependency>
+            <!-- framework -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- tools -->
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
                 <version>${jsr305.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.yaml</groupId>
@@ -77,12 +88,11 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+            <!-- For dev -->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -93,14 +103,6 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
-                    <configuration>
-                        <excludes>
-                            <exclude>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                            </exclude>
-                        </excludes>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

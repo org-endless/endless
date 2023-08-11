@@ -2,7 +2,6 @@ package org.endless.erp.web.interceptor;
 
 import org.endless.erp.web.signin.SignInHandlerInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -16,26 +15,26 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class BaseInterceptorConfiguration implements WebMvcConfigurer {
 
-  /**
-   * addInterceptors
-   *
-   * @param registry InterceptorRegistry
-   */
-  @Override
-  public void addInterceptors(@NonNull InterceptorRegistry registry) {
-    registry
-        .addInterceptor(new SignInHandlerInterceptor())
-        .addPathPatterns("/**")
-        .excludePathPatterns(
-            "/game/eve/**",
-            "/",
-            "/index",
-            "/signin",
-            "/user/**",
-            "/error",
-            "/css/**",
-            "/img/**",
-            "/js/**",
-            "/plugins/**");
-  }
+    /**
+     * addInterceptors
+     *
+     * @param registry InterceptorRegistry
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry
+                .addInterceptor(new SignInHandlerInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns(
+                        "/game/eve/**",
+                        "/",
+                        "/index",
+                        "/signin",
+                        "/user/**",
+                        "/error",
+                        "/css/**",
+                        "/img/**",
+                        "/js/**",
+                        "/plugins/**");
+    }
 }

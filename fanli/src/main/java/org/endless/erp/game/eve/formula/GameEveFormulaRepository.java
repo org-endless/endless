@@ -1,6 +1,6 @@
 package org.endless.erp.game.eve.formula;
 
-import org.endless.erp.share.mongo.base.BaseMongoRepository;
+import org.endless.data.mongo.base.BaseMongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
