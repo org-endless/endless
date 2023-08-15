@@ -1,7 +1,7 @@
 package org.endless.erp.web.signin;
 
 import jakarta.servlet.http.HttpSession;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * SignInController
+ * <p>
+ * <p>update 2022/11/17 17:09
+ * <p>update 2023/8/15 18:35
  *
  * @author Deng Haozhi
- * @date 2022/11/17 17:09
- * @since 0.0.2
+ * @since 0.0.1
  */
-@Log4j2
+@Slf4j
 @Controller
 @RequestMapping("/user/signin")
 public class SignInController {

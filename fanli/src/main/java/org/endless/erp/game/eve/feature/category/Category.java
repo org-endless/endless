@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Category for EVE
+ * Category for Game EVE
  *
  * @author Deng Haozhi
  * @date 2023/4/20 17:34

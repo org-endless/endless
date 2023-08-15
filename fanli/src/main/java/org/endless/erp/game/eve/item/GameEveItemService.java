@@ -1,10 +1,10 @@
 package org.endless.erp.game.eve.item;
 
-import lombok.extern.log4j.Log4j2;
-import org.endless.com.utiliy.file.FileLoader;
+import lombok.extern.slf4j.Slf4j;
 import org.endless.erp.game.eve.share.regular.GameEvePattern;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
 import org.endless.erp.share.ddd.item.ItemService;
+import org.endless.spring.boot.com.utiliy.file.FileLoader;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -17,9 +17,10 @@ import java.util.stream.Stream;
 
 import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
+
 /**
  * GameEveItemService
- * 游戏EVE物品/商品服务类
+ * <p>游戏EVE物品/商品服务类
  * <p>Game EVE item services.
  * <p>
  * <p>create 2023/03/07 1:28
@@ -29,7 +30,7 @@ import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
  * @see ItemService
  * @since 0.0.3
  */
-@Log4j2
+@Slf4j
 @Service("gameEveItemService")
 public class GameEveItemService implements ItemService {
 

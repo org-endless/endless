@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MetaGroupService {
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
-    // public MetaGroupService(BulkMongoRepository bulkMongoRepository) {
+    // public MetaGroupService(BulkMongoOperations bulkMongoRepository) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     // }
     //
@@ -35,7 +35,7 @@ public class MetaGroupService {
     //
     //         upsertList.add(Pair.of(query, update));
     //     }
-    //     bulkMongoRepository.upsert(upsertList, PAGE_SIZE, org.endless.erp.game.eve.feature.metagroup.MetaGroup.class);
+    //     bulkMongoRepository.upsert(upsertList, PAGE_SIZE, org.endless.demo.metagroup.feature.eve.MetaGroup.class);
     //     System.out.println("MetaGroupService load executed!");
     // }
 

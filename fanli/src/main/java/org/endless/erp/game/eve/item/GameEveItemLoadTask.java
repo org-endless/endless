@@ -1,12 +1,12 @@
 package org.endless.erp.game.eve.item;
 
-import lombok.extern.log4j.Log4j2;
-import org.endless.com.utiliy.date.DateFormatter;
-import org.endless.com.utiliy.decimal.Decimal;
-import org.endless.com.utiliy.object.ObjectToMongoObject;
-import org.endless.data.mongo.bulk.BulkMongoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
 import org.endless.erp.share.ddd.item.Item;
+import org.endless.spring.boot.com.utiliy.date.DateFormatter;
+import org.endless.spring.boot.com.utiliy.decimal.Decimal;
+import org.endless.spring.boot.com.utiliy.object.ObjectToMongoObject;
+import org.endless.spring.boot.data.mongo.bulk.BulkMongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -32,16 +32,15 @@ import static org.endless.erp.share.ddd.industry.Industry.GAME_EVE;
  * @see GameEveAsyncTask
  * @since 0.0.3
  */
-@Log4j2
+@Slf4j
 @Component("gameEveItemLoadTask")
 public class GameEveItemLoadTask implements GameEveAsyncTask {
 
-    private final BulkMongoRepository bulkRepository;
+    private final BulkMongoOperations bulkMongoOperations;
 
-    public GameEveItemLoadTask(BulkMongoRepository bulkRepository) {
-        this.bulkRepository = bulkRepository;
+    public GameEveItemLoadTask(BulkMongoOperations bulkMongoOperations) {
+        this.bulkMongoOperations = bulkMongoOperations;
     }
-
 
     /**
      * 运行游戏EVE物品/商品数据文件加载异步任务
@@ -80,8 +79,8 @@ public class GameEveItemLoadTask implements GameEveAsyncTask {
             pairs.add(Pair.of(query, update));
         });
 
-        log.trace(pairs);
-        bulkRepository.upsert(pairs, GameEveItem.class);
+        log.trace(pairs.toString());
+        bulkMongoOperations.upsert(pairs, GameEveItem.class);
 
         log.info("Thread: " + Thread.currentThread().getName() + " load executed completely!");
     }

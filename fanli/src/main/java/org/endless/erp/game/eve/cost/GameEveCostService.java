@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class GameEveCostService {
 
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
     // private final GameEveItemService gameEveItemService;
     //
     // private final GameEveFormulaService gameEveFormulaService;
     //
-    // public GameEveCostService(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, GameEveFormulaService gameEveFormulaService) {
+    // public GameEveCostService(BulkMongoOperations bulkMongoRepository, GameEveItemService gameEveItemService, GameEveFormulaService gameEveFormulaService) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     //     this.gameEveItemService = gameEveItemService;
     //     this.gameEveFormulaService = gameEveFormulaService;

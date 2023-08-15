@@ -3,13 +3,12 @@ package org.endless.erp.game.eve.market.saleHistory;
 import lombok.extern.log4j.Log4j2;
 import org.endless.erp.game.eve.item.GameEveItemService;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
+import org.endless.erp.share.constant.ConstantResource;
 import org.endless.erp.share.ddd.saleHistory.SaleHistoryService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * GameEveMarketSaleHistoryService
@@ -42,7 +41,7 @@ public class GameEveMarketSaleHistoryService implements SaleHistoryService {
         log.info("Saving!");
         log.debug("Save main thread begin: " + begin);
 
-        Pageable pageable = PageRequest.of(0, PAGE_SIZE);
+        Pageable pageable = PageRequest.of(0, ConstantResource.PAGE_SIZE);
 
         while (true) {
             var slice = itemService.findItemIdSliceByPublished(pageable);

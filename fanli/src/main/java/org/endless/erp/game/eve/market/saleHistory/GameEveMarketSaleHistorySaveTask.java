@@ -1,12 +1,13 @@
 package org.endless.erp.game.eve.market.saleHistory;
 
 import lombok.extern.log4j.Log4j2;
-import org.endless.com.utiliy.date.DateFormatter;
-import org.endless.com.utiliy.decimal.Decimal;
-import org.endless.com.utiliy.object.ObjectToMongoObject;
-import org.endless.data.mongo.bulk.BulkMongoRepository;
 import org.endless.erp.game.eve.item.GameEveItem;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
+import org.endless.erp.share.ddd.industry.Industry;
+import org.endless.spring.boot.com.utiliy.date.DateFormatter;
+import org.endless.spring.boot.com.utiliy.decimal.Decimal;
+import org.endless.spring.boot.com.utiliy.object.ObjectToMongoObject;
+import org.endless.spring.boot.data.mongo.bulk.BulkMongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -17,8 +18,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import static org.endless.erp.share.ddd.industry.Industry.GAME_EVE;
 
 /**
  * GameEveMarketSaleHistorySaveTask
@@ -36,9 +35,9 @@ public class GameEveMarketSaleHistorySaveTask implements GameEveAsyncTask {
 
     private final GameEveMarketSaleHistoryAdapter marketSaleHistoryAdapter;
 
-    private final BulkMongoRepository bulkRepository;
+    private final BulkMongoOperations bulkRepository;
 
-    public GameEveMarketSaleHistorySaveTask(GameEveMarketSaleHistoryAdapter marketSaleHistoryAdapter, BulkMongoRepository bulkRepository) {
+    public GameEveMarketSaleHistorySaveTask(GameEveMarketSaleHistoryAdapter marketSaleHistoryAdapter, BulkMongoOperations bulkRepository) {
         this.marketSaleHistoryAdapter = marketSaleHistoryAdapter;
         this.bulkRepository = bulkRepository;
     }
@@ -65,14 +64,14 @@ public class GameEveMarketSaleHistorySaveTask implements GameEveAsyncTask {
             historyList.forEach(history -> {
                 var rat = (Map<?, ?>) ObjectToMongoObject.convert(history);
                 var date = rat.get("date");
-                var id = GAME_EVE + "_" + date + "_" + itemId;
+                var id = Industry.GAME_EVE + "_" + date + "_" + itemId;
                 var minPrice = Decimal.format(rat.get("lowest"));
                 var maxPrice = Decimal.format(rat.get("highest"));
                 var averagePrice = Decimal.average(List.of(minPrice, maxPrice));
 
                 var query = Query.query(Criteria.where("id").is(id));
                 var update = Update.update("itemId", itemId)
-                        .set("industryId", GAME_EVE)
+                        .set("industryId", Industry.GAME_EVE)
                         .set("date", date)
                         .set("price.minPrice", minPrice)
                         .set("price.maxPrice", maxPrice)

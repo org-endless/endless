@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameEveSalesUpdateTaskImpl implements GameEveSalesUpdateTask {
     //
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
     // private final GameEveItemService gameEveItemService;
     //
@@ -22,7 +22,7 @@ public class GameEveSalesUpdateTaskImpl implements GameEveSalesUpdateTask {
     //
     // private final GameEveThreadPoolConfiguration gameEveThreadPoolConfiguration;
     //
-    // public GameEveSalesUpdateTaskImpl(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, GameEveMarketSaleHistoryService marketHistoryService, GameEveThreadPoolConfiguration gameEveThreadPoolConfiguration) {
+    // public GameEveSalesUpdateTaskImpl(BulkMongoOperations bulkMongoRepository, GameEveItemService gameEveItemService, GameEveMarketSaleHistoryService marketHistoryService, GameEveThreadPoolConfiguration gameEveThreadPoolConfiguration) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     //     this.gameEveItemService = gameEveItemService;
     //     this.marketHistoryService = marketHistoryService;

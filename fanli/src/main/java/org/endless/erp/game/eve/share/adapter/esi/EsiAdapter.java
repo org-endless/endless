@@ -1,7 +1,8 @@
 package org.endless.erp.game.eve.share.adapter.esi;
 
 import lombok.extern.log4j.Log4j2;
-import org.endless.com.utiliy.url.UrlFormatter;
+import org.endless.erp.share.constant.ConstantResource;
+import org.endless.spring.boot.com.utiliy.url.UrlFormatter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -10,8 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import static org.endless.erp.share.constant.ConstantResource.REGION_ID;
 
 /**
  * EsiAdapter
@@ -81,6 +80,6 @@ public class EsiAdapter {
     }
 
     protected String getUrl(String service, String scenes) {
-        return "https://esi.evepc.163.com/latest/" + service + "/" + REGION_ID + "/" + scenes;
+        return "https://esi.evepc.163.com/latest/" + service + "/" + ConstantResource.REGION_ID + "/" + scenes;
     }
 }

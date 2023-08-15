@@ -2,7 +2,7 @@ package org.endless.erp.game.eve.share.thread;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.endless.com.thread.model.ThreadPoolProperties;
+import org.endless.spring.boot.com.thread.model.ThreadPoolProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**

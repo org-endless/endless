@@ -2,8 +2,7 @@ package org.endless.erp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * erp应用程序
@@ -13,8 +12,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * @author Deng Haozhi
  * @since 0.0.1
  */
-@EnableMongoRepositories(basePackages = {"org.endless.data.mongo"})
-@ComponentScan(value = "org.endless")
+
+@EnableAsync
 @SpringBootApplication
 public class ErpApplication {
 

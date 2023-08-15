@@ -1,6 +1,6 @@
 package org.endless.erp.game.eve.item;
 
-import org.endless.data.mongo.base.BaseMongoRepository;
+import org.endless.spring.boot.data.mongo.base.BaseMongoRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.mongodb.repository.CountQuery;

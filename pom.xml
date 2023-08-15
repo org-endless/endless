@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.endless</groupId>
-    <artifactId>endless</artifactId>
-    <name>endless</name>
+    <artifactId>endless-dependencies</artifactId>
     <version>0.0.4</version>
-    <description>Endless Build</description>
+    <packaging>pom</packaging>
+    <name>endless-dependencies</name>
+    <description>Endless Dependencies</description>
     <url>https://github.com/org-endless/endless</url>
     <licenses>
         <license>
@@ -16,39 +18,37 @@
     </licenses>
     <developers>
         <developer>
-            <name>Deng Haozhi</name>
+            <name>Endless</name>
             <email>haozhi_deng@126.com</email>
             <organization>Endless, Org.</organization>
             <organizationUrl>https://github.com/org-endless</organizationUrl>
         </developer>
     </developers>
-
-    <packaging>pom</packaging>
-
+    <scm>
+        <url>https://github.com/org-endless/endless</url>
+    </scm>
     <modules>
-        <module>nvwa-spring-boot-starter</module>
-        <module>huangce-spring-boot-starter</module>
         <module>fanli</module>
+        <module>huangce-spring-boot-starter</module>
+        <module>nvwa-spring-boot-starter</module>
         <module>yulei</module>
         <module>zhenghe</module>
     </modules>
-
     <properties>
-        <!-- Maven default -->
+        <!-- Maven -->
         <java.version>20</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-
         <!-- Dependencies version -->
         <endless.version>0.0.4</endless.version>
         <spring-boot.version>3.1.2</spring-boot.version>
-        <!-- <jsr305.version>3.0.2</jsr305.version> -->
         <snakeyaml.version>2.0</snakeyaml.version>
         <!-- <jackson.version>2.15.1</jackson.version> -->
         <lombok.version>1.18.28</lombok.version>
+        <jsr305.version>3.0.2</jsr305.version>
     </properties>
 
     <dependencyManagement>
@@ -73,11 +73,6 @@
                 <scope>import</scope>
             </dependency>
             <!-- tools -->
-            <!-- <dependency> -->
-            <!--     <groupId>com.google.code.findbugs</groupId> -->
-            <!--     <artifactId>jsr305</artifactId> -->
-            <!--     <version>${jsr305.version}</version> -->
-            <!-- </dependency> -->
             <dependency>
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
@@ -88,11 +83,17 @@
             <!--     <artifactId>jackson-databind</artifactId> -->
             <!--     <version>${jackson.version}</version> -->
             <!-- </dependency> -->
-            <!-- For dev -->
+            <!-- Dev -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <!-- Built -->
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

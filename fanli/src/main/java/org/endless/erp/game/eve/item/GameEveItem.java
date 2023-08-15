@@ -22,7 +22,6 @@ import org.springframework.validation.annotation.Validated;
  * @see Item
  * @since 0.0.3
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor

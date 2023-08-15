@@ -1,18 +1,17 @@
 package org.endless.erp.game.eve.formula;
 
 import lombok.extern.log4j.Log4j2;
-import org.endless.com.utiliy.file.FileLoader;
 import org.endless.erp.game.eve.share.regular.GameEvePattern;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
+import org.endless.erp.share.constant.ConstantResource;
 import org.endless.erp.share.ddd.formula.FormulaService;
+import org.endless.spring.boot.com.utiliy.file.FileLoader;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import static org.endless.erp.share.constant.ConstantResource.PAGE_SIZE;
 
 /**
  * GameEveFormulaService
@@ -62,7 +61,7 @@ public class GameEveFormulaService implements FormulaService {
             var scannerMap = Map.of("formulaItemId", formulaItemId, "scanner", scanner.next());
             scannerMaps.get(index).add(scannerMap);
 
-            if (scannerMaps.get(index).size() % PAGE_SIZE == 0) {
+            if (scannerMaps.get(index).size() % ConstantResource.PAGE_SIZE == 0) {
 
                 log.debug("scannerMap size: " + scannerMaps.get(index).size() + "  scannerMap index: " + index);
 
@@ -104,7 +103,7 @@ public class GameEveFormulaService implements FormulaService {
 
             scannerMaps.get(index).add(scanner.next());
 
-            if (scannerMaps.get(index).size() % PAGE_SIZE == 0) {
+            if (scannerMaps.get(index).size() % ConstantResource.PAGE_SIZE == 0) {
 
                 log.debug("scannerMap size: " + scannerMaps.get(index).size() + "  scannerMap index: " + index);
 

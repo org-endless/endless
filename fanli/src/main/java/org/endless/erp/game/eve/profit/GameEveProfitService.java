@@ -1,26 +1,32 @@
 package org.endless.erp.game.eve.profit;
 
-import org.endless.com.utiliy.decimal.Decimal;
 import org.endless.erp.game.eve.item.GameEveItem;
+import org.endless.spring.boot.com.utiliy.decimal.Decimal;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 /**
+ * GameEveProfitService
+ * <p>
+ * <p>
+ * <p>
+ * <p>create 2023/4/28 22:48
+ * <p>update 2023/8/15 20:57
+ *
  * @author Deng Haozhi
- * @date 2023/4/28 22:48
  * @since 0.0.2
  */
 @Service
 public class GameEveProfitService {
 
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
     // private final GameEveItemService gameEveItemService;
     //
     // private final GameEveFormulaService gameEveFormulaService;
     //
-    // public GameEveProfitService(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, GameEveFormulaService gameEveFormulaService) {
+    // public GameEveProfitService(BulkMongoOperations bulkMongoRepository, GameEveItemService gameEveItemService, GameEveFormulaService gameEveFormulaService) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     //     this.gameEveItemService = gameEveItemService;
     //     this.gameEveFormulaService = gameEveFormulaService;

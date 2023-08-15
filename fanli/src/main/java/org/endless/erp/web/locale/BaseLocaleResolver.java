@@ -2,7 +2,7 @@ package org.endless.erp.web.locale;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
@@ -11,16 +11,17 @@ import java.util.Locale;
 
 /**
  * BaseLocaleResolver
- *
  * <p>国际化语言格式转化
- *
  * <p>Resolve locale for i18n.
+ * <p>
+ * <p>create 2022/11/17 16:52
+ * <p>update 2023/8/15 18:32
  *
  * @author Deng Haozhi
- * @date 2022/11/17 16:52
+ * @see LocaleResolver
  * @since 0.0.1
  */
-@Log4j2
+@Slf4j
 public class BaseLocaleResolver implements LocaleResolver {
 
     /**

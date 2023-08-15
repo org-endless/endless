@@ -1,6 +1,6 @@
 package org.endless.erp.game.eve.share.thread;
 
-import org.endless.com.thread.model.AsyncTask;
+import org.endless.spring.boot.com.thread.model.AsyncTask;
 import org.springframework.scheduling.annotation.Async;
 
 import java.util.concurrent.CompletableFuture;

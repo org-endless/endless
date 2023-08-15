@@ -1,12 +1,12 @@
 package org.endless.erp.game.eve.formula;
 
-import lombok.extern.log4j.Log4j2;
-import org.endless.com.utiliy.date.DateFormatter;
-import org.endless.com.utiliy.decimal.Decimal;
-import org.endless.com.utiliy.object.ObjectToMongoObject;
-import org.endless.data.mongo.bulk.BulkMongoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
 import org.endless.erp.share.ddd.formula.Formula;
+import org.endless.spring.boot.com.utiliy.date.DateFormatter;
+import org.endless.spring.boot.com.utiliy.decimal.Decimal;
+import org.endless.spring.boot.com.utiliy.object.ObjectToMongoObject;
+import org.endless.spring.boot.data.mongo.bulk.BulkMongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -26,13 +26,13 @@ import java.util.Map;
  * @date 2023/5/23 8:34
  * @since 0.0.3
  */
-@Log4j2
+@Slf4j
 @Component("gameEveFormulaLoadTask")
 public class GameEveFormulaLoadTask implements GameEveAsyncTask {
 
-    private final BulkMongoRepository bulkRepository;
+    private final BulkMongoOperations bulkRepository;
 
-    public GameEveFormulaLoadTask(BulkMongoRepository bulkRepository) {
+    public GameEveFormulaLoadTask(BulkMongoOperations bulkRepository) {
         this.bulkRepository = bulkRepository;
     }
 
@@ -86,7 +86,7 @@ public class GameEveFormulaLoadTask implements GameEveAsyncTask {
                 pairs.addAll(getPairs(researchTime, GameEveFormula.Categories.researchTime, formulaItemId, maxProductionLimit));
             }
         });
-        log.trace(pairs);
+        log.trace(pairs.toString());
         bulkRepository.upsert(pairs, GameEveFormula.class);
 
         long end = System.currentTimeMillis();
@@ -112,14 +112,14 @@ public class GameEveFormulaLoadTask implements GameEveAsyncTask {
             var rat = (Map<?, ?>) ObjectToMongoObject.convert(new Yaml().load(String.valueOf(scanner)));
             var items = (Map<?, ?>) rat.get("types");
 
-            log.trace(items);
+            log.trace(items.toString());
 
             List<Formula.Material> materials = new ArrayList<>();
             String itemId = "", productionPerCycle = "";
 
             for (var key : items.keySet()) {
 
-                log.trace(key);
+                log.trace(key.toString());
 
                 var material = (Map<?, ?>) items.get(key);
 
@@ -149,7 +149,7 @@ public class GameEveFormulaLoadTask implements GameEveAsyncTask {
 
             pairs.add(Pair.of(query, update));
         });
-        log.trace(pairs);
+        log.trace(pairs.toString());
         bulkRepository.upsert(pairs, GameEveFormula.class);
 
         long end = System.currentTimeMillis();
@@ -218,7 +218,7 @@ public class GameEveFormulaLoadTask implements GameEveAsyncTask {
 
     protected List<Formula.Material> getMaterials(Map<?, ?> formula) {
 
-        log.debug("Get materials from formula");
+        log.trace("Get materials from formula");
 
         List<Formula.Material> materials = new ArrayList<>();
         if (formula.get("materials") != null) {
@@ -233,7 +233,7 @@ public class GameEveFormulaLoadTask implements GameEveAsyncTask {
 
     protected List<Formula.Skill> getSkills(Map<?, ?> formula) {
 
-        log.debug("Get skills from formula");
+        log.trace("Get skills from formula");
 
         List<Formula.Skill> skills = new ArrayList<>();
         if (formula.get("skills") != null) {

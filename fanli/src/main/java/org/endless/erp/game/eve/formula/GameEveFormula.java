@@ -6,13 +6,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * GameEveFormula for EVE
+ * GameEveFormula
+ * <p>游戏EVE配方类，映射数据文档game.eve.formula
+ * <p>Game EVE formula class mapping the data document named game.eve.formula.
+ * <p>
+ * <p>create 2023/4/11 16:51
+ * <p>update 2023/8/15 18:41
  *
  * @author Deng Haozhi
- * @date 2023/4/11 16:51
+ * @see Formula
  * @since 0.0.2
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
@@ -45,6 +49,5 @@ public class GameEveFormula extends Formula {
             this.enInstruction = enInstruction;
             this.zhInstruction = zhInstruction;
         }
-
     }
 }

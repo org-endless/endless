@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CategoryService {
 
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
-    // public CategoryService(BulkMongoRepository bulkMongoRepository) {
+    // public CategoryService(BulkMongoOperations bulkMongoRepository) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     // }
     //

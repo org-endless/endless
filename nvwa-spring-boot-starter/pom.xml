@@ -4,19 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.endless</groupId>
-        <artifactId>endless</artifactId>
+        <artifactId>endless-dependencies</artifactId>
         <version>0.0.4</version>
     </parent>
 
     <artifactId>nvwa-spring-boot-starter</artifactId>
     <version>0.0.4</version>
+    <packaging>jar</packaging>
     <name>nvwa-spring-boot-starter</name>
     <description>Nvwa, goddess of creation in China.</description>
 
-    <packaging>jar</packaging>
-
     <dependencies>
-        <!-- framework -->
+        <!-- Framework -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -31,13 +30,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
+            <optional>true</optional>
         </dependency>
         <!-- Autoconfigure  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
+            <optional>true</optional>
         </dependency>
-        <!-- For dev -->
+        <!-- Dev -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -53,7 +54,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- For test -->
+        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

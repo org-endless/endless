@@ -1,12 +1,13 @@
 package org.endless.erp.game.eve.market.order;
 
 import lombok.extern.log4j.Log4j2;
-import org.endless.com.utiliy.date.DateFormatter;
-import org.endless.com.utiliy.decimal.Decimal;
-import org.endless.com.utiliy.object.ObjectToMongoObject;
-import org.endless.data.mongo.bulk.BulkMongoRepository;
 import org.endless.erp.game.eve.share.thread.GameEveAsyncTask;
+import org.endless.erp.share.ddd.industry.Industry;
 import org.endless.erp.share.ddd.order.Order;
+import org.endless.spring.boot.com.utiliy.date.DateFormatter;
+import org.endless.spring.boot.com.utiliy.decimal.Decimal;
+import org.endless.spring.boot.com.utiliy.object.ObjectToMongoObject;
+import org.endless.spring.boot.data.mongo.bulk.BulkMongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -17,8 +18,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import static org.endless.erp.share.ddd.industry.Industry.GAME_EVE;
 
 /**
  * GameEveMarketOrderSaveTask
@@ -35,9 +34,9 @@ public class GameEveMarketOrderSaveTask implements GameEveAsyncTask {
 
     private final GameEveMarketOrderAdapter marketOrderAdapter;
 
-    private final BulkMongoRepository bulkRepository;
+    private final BulkMongoOperations bulkRepository;
 
-    public GameEveMarketOrderSaveTask(GameEveMarketOrderAdapter marketOrderAdapter, BulkMongoRepository bulkRepository) {
+    public GameEveMarketOrderSaveTask(GameEveMarketOrderAdapter marketOrderAdapter, BulkMongoOperations bulkRepository) {
         this.marketOrderAdapter = marketOrderAdapter;
         this.bulkRepository = bulkRepository;
     }
@@ -62,11 +61,11 @@ public class GameEveMarketOrderSaveTask implements GameEveAsyncTask {
 
             var rat = (Map<?, ?>) ObjectToMongoObject.convert(order);
             var orderId = String.valueOf(rat.get("order_id"));
-            var id = GAME_EVE + "_" + orderId;
+            var id = Industry.GAME_EVE + "_" + orderId;
 
             var query = Query.query(Criteria.where("id").is(id));
             var update = Update.update("orderId", orderId)
-                    .set("industryId", GAME_EVE)
+                    .set("industryId", Industry.GAME_EVE)
                     .set("itemId", rat.get("type_id"))
                     .set("categories", ((Boolean) rat.get("is_buy_order")) ? Order.Categories.purchase : Order.Categories.sale)
                     .set("minPurchaseQuantity", Decimal.format(rat.get("min_volume")))

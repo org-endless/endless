@@ -28,7 +28,7 @@ public class Group {
     @Pattern(regexp = Regular.ID, message = Regular.ID_MESSAGE)
     private String categoryId;
 
-    private Name name;
+    private final Name name;
 
     private boolean published;
 

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class GroupService {
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
-    // public GroupService(BulkMongoRepository bulkMongoRepository) {
+    // public GroupService(BulkMongoOperations bulkMongoRepository) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     // }
     //

@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 @Service("gameEvePriceService")
 public class GameEvePriceService implements PriceServer {
 
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
     // private final GameEveItemService gameEveItemService;
     //
     // private final GameEveMarketOrderService gameEveMarketOrderService;
     //
-    // public GameEvePriceService(BulkMongoRepository bulkMongoRepository, GameEveItemService gameEveItemService, GameEveMarketOrderService gameEveMarketOrderService) {
+    // public GameEvePriceService(BulkMongoOperations bulkMongoRepository, GameEveItemService gameEveItemService, GameEveMarketOrderService gameEveMarketOrderService) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     //     this.gameEveItemService = gameEveItemService;
     //     this.gameEveMarketOrderService = gameEveMarketOrderService;

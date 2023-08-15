@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class MarketGroupService {
 
-    // private final BulkMongoRepository bulkMongoRepository;
+    // private final BulkMongoOperations bulkMongoRepository;
     //
-    // public MarketGroupService(BulkMongoRepository bulkMongoRepository) {
+    // public MarketGroupService(BulkMongoOperations bulkMongoRepository) {
     //     this.bulkMongoRepository = bulkMongoRepository;
     // }
     //
