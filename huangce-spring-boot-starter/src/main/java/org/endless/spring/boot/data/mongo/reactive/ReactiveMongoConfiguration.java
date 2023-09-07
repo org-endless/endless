@@ -3,7 +3,7 @@ package org.endless.spring.boot.data.mongo.reactive;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Exception Translation Support for spring-data-mongodb-reactive
+ * Exception Translation Support for spring-data-mongo-reactive
  * create 2023/01/26 16:30
  *
  * @author Deng Haozhi

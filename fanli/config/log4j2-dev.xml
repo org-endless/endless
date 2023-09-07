@@ -22,7 +22,7 @@
         </RollingRandomAccessFile>
     </Appenders>
     <Loggers>
-        <Logger name="org.mongodb" level="INFO"/>
+        <Logger name="org.mongo" level="INFO"/>
         <Logger name="org.apache" level="INFO"/>
         <Logger name="org.springframework" level="INFO"/>
         <Logger name="_org.springframework" level="INFO"/>

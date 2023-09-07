@@ -1,6 +1,6 @@
 package org.endless.erp.game.eve.share.thread;
 
-import org.endless.spring.boot.com.thread.model.ThreadPoolConfiguration;
+import org.endless.spring.boot.com.thread.model.AbstractThreadPoolConfiguration;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -16,13 +16,13 @@ import java.util.concurrent.Executor;
  *
  * @author Deng Haozhi
  * @date 2023/5/8 16:15
- * @see ThreadPoolConfiguration
+ * @see AbstractThreadPoolConfiguration
  * @since 0.0.2
  */
 @EnableAsync
 @Configuration
 @EnableConfigurationProperties(GameEveThreadPoolProperties.class)
-public class GameEveThreadPoolConfiguration extends ThreadPoolConfiguration {
+public class GameEveThreadPoolConfiguration extends AbstractThreadPoolConfiguration {
 
     public GameEveThreadPoolConfiguration(GameEveThreadPoolProperties gameEveThreadPoolProperties) {
         super(gameEveThreadPoolProperties);

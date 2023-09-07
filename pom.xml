@@ -31,8 +31,9 @@
         <module>fanli</module>
         <module>huangce-spring-boot-starter</module>
         <module>nvwa-spring-boot-starter</module>
-        <module>yulei</module>
-        <module>zhenghe</module>
+        <!--        <module>yulei</module>-->
+        <!--        <module>zhenghe</module>-->
+        <!--        <module>flowable-mongo-spring-boot-starter</module>-->
     </modules>
     <properties>
         <!-- Maven -->
@@ -45,8 +46,8 @@
         <!-- Dependencies version -->
         <endless.version>0.0.4</endless.version>
         <spring-boot.version>3.1.2</spring-boot.version>
+        <flowable.version>7.0.0.M1</flowable.version>
         <snakeyaml.version>2.0</snakeyaml.version>
-        <!-- <jackson.version>2.15.1</jackson.version> -->
         <lombok.version>1.18.28</lombok.version>
         <jsr305.version>3.0.2</jsr305.version>
     </properties>
@@ -54,6 +55,11 @@
     <dependencyManagement>
         <!-- endless dependencies -->
         <dependencies>
+            <dependency>
+                <groupId>org.endless</groupId>
+                <artifactId>flowable-mongo-spring-boot-starter</artifactId>
+                <version>${endless.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.endless</groupId>
                 <artifactId>huangce-spring-boot-starter</artifactId>
@@ -72,17 +78,17 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
             <!-- tools -->
             <dependency>
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
                 <version>${snakeyaml.version}</version>
             </dependency>
-            <!-- <dependency> -->
-            <!--     <groupId>com.fasterxml.jackson.core</groupId> -->
-            <!--     <artifactId>jackson-databind</artifactId> -->
-            <!--     <version>${jackson.version}</version> -->
-            <!-- </dependency> -->
             <!-- Dev -->
             <dependency>
                 <groupId>org.projectlombok</groupId>

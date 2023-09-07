@@ -8,7 +8,7 @@
 // import org.endless.erp.share.pattern.Regular;
 // import org.springframework.data.annotation.Id;
 // import org.springframework.data.annotation.Version;
-// import org.springframework.data.mongodb.core.mapping.Document;
+// import org.springframework.data.mongo.core.mapping.Document;
 
 /**
  * TODO

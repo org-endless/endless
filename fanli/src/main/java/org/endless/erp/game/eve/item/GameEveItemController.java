@@ -1,6 +1,6 @@
 package org.endless.erp.game.eve.item;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.endless.erp.share.ddd.item.ItemService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Deng Haozhi
  * @since 0.0.3
  */
-@Log4j2
+@Slf4j
 @RestController
 @RequestMapping("/game/eve/item")
 public class GameEveItemController {

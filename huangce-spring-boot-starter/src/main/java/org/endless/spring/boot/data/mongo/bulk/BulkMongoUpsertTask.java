@@ -32,6 +32,6 @@ public interface BulkMongoUpsertTask extends BaseAsyncTask {
      * @param entityClass 进行操作的实体类 (The entity class that operates.)
      */
     @Async("baseTaskExecutor")
-    default void run(List<Pair<Query, Update>> pairs, Class<?> entityClass) {
-    }
+    void run(List<Pair<Query, Update>> pairs, Class<?> entityClass);
+
 }
