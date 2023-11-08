@@ -1,0 +1,4 @@
+### data ###
+fanli-core/data/
+!**/src/java/**/data/
+!**/src/test/**/data/

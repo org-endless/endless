@@ -3,12 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.endless</groupId>
-    <artifactId>endless-build</artifactId>
-    <version>${revision}</version>
+    <parent>
+        <groupId>org.endless</groupId>
+        <artifactId>endless-dependencies</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <artifactId>endless-parent</artifactId>
     <packaging>pom</packaging>
-    <name>endless-build</name>
-    <description>Endless Build</description>
+    <name>endless-parent</name>
+
+    <description>Endless Parent</description>
     <url>https://github.com/org-endless/endless</url>
     <organization>
         <name>Endless, Org.</name>
@@ -33,19 +37,4 @@
         <developerConnection>scm:git:ssh://git@github.com/org-endless/endless.git</developerConnection>
         <url>https://github.com/org-endless/endless</url>
     </scm>
-
-    <properties>
-        <revision>0.0.4-SNAPSHOT</revision>
-        <main.basedir>${basedir}</main.basedir>
-    </properties>
-    <modules>
-        <module>endless-project/endless-dependencies</module>
-        <module>endless-project/endless-parent</module>
-        <module>endless-project/endless-starters/flowable-mongo-spring-boot-starter</module>
-        <!--        <module>endless-project/endless-starters/huangce-spring-boot-starter</module>-->
-        <module>endless-project/endless-starters/nvwa-spring-boot-starter</module>
-        <!--        <module>endless-project/endless-starters/yulei-spring-boot-starter</module>-->
-        <!--        <module>endless-project/endless-starters/zhenghe-spring-boot-starter</module>-->
-        <!--        <module>endless-project/fanli</module>-->
-    </modules>
 </project>

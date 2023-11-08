@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="Endless"
+                  name="Endless" start-page="README.md">
+
+    <toc-element topic="README.md"/>
+    <toc-element toc-title="endless-project">
+        <toc-element toc-title="endless-starters">
+            <toc-element toc-title="flowable-mongo-spring-boot-starter">
+                <toc-element topic="flowable-mongo-spring-boot-starter_README.md"/>
+            </toc-element>
+            <toc-element toc-title="huangce-spring-boot-starter">
+                <toc-element topic="huangce-spring-boot-starter_README.md"/>
+            </toc-element>
+            <toc-element toc-title="nvwa-spring-boot-starter">
+                <toc-element topic="nvwa-spring-boot-starter_README.md"/>
+            </toc-element>
+            <toc-element toc-title="yulei-spring-boot-starter">
+                <toc-element topic="yulei-spring-boot-starter_README.md"/>
+            </toc-element>
+        </toc-element>
+    </toc-element>
+    <toc-element toc-title="xishi">
+        <toc-element topic="xishi_README.md"/>
+        <toc-element toc-title="node_modules">
+            <toc-element toc-title="@babel">
+                <toc-element toc-title="parser">
+                    <toc-element topic="parser_README.md"/>
+                    <toc-element topic="parser_CHANGELOG.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@ctrl">
+                <toc-element toc-title="tinycolor">
+                    <toc-element topic="tinycolor_README.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@esbuild">
+                <toc-element toc-title="win32-x64">
+                    <toc-element topic="win32-x64_README.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@floating-ui">
+                <toc-element toc-title="core">
+                    <toc-element topic="core_README.md"/>
+                </toc-element>
+                <toc-element toc-title="dom">
+                    <toc-element topic="dom_README.md"/>
+                </toc-element>
+                <toc-element toc-title="utils">
+                    <toc-element topic="utils_README.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@jridgewell">
+                <toc-element toc-title="sourcemap-codec">
+                    <toc-element topic="sourcemap-codec_README.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@popperjs">
+                <toc-element toc-title="core">
+                    <toc-element topic="@popperjs_core_README.md"/>
+                    <toc-element topic="core_LICENSE.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@types">
+                <toc-element toc-title="lodash">
+                    <toc-element topic="@types_lodash_README.md"/>
+                </toc-element>
+                <toc-element toc-title="lodash-es">
+                    <toc-element topic="@types_lodash-es_README.md"/>
+                </toc-element>
+                <toc-element toc-title="web-bluetooth">
+                    <toc-element topic="web-bluetooth_README.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@vitejs">
+                <toc-element toc-title="plugin-vue">
+                    <toc-element topic="plugin-vue_README.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@vue">
+                <toc-element toc-title="compiler-core">
+                    <toc-element topic="compiler-core_README.md"/>
+                </toc-element>
+                <toc-element toc-title="compiler-dom">
+                    <toc-element topic="compiler-dom_README.md"/>
+                </toc-element>
+                <toc-element toc-title="compiler-sfc">
+                    <toc-element topic="compiler-sfc_README.md"/>
+                </toc-element>
+                <toc-element toc-title="compiler-ssr">
+                    <toc-element topic="compiler-ssr_README.md"/>
+                </toc-element>
+                <toc-element toc-title="reactivity">
+                    <toc-element topic="reactivity_README.md"/>
+                </toc-element>
+                <toc-element toc-title="reactivity-transform">
+                    <toc-element topic="reactivity-transform_README.md"/>
+                </toc-element>
+                <toc-element toc-title="runtime-core">
+                    <toc-element topic="runtime-core_README.md"/>
+                </toc-element>
+                <toc-element toc-title="runtime-dom">
+                    <toc-element topic="runtime-dom_README.md"/>
+                </toc-element>
+                <toc-element toc-title="server-renderer">
+                    <toc-element topic="server-renderer_README.md"/>
+                </toc-element>
+                <toc-element toc-title="shared">
+                    <toc-element topic="shared_README.md"/>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="@vueuse">
+                <toc-element toc-title="core">
+                    <toc-element topic="@vueuse_core_README.md"/>
+                    <toc-element toc-title="node_modules">
+                        <toc-element toc-title="vue-demi">
+                            <toc-element topic="node_modules_vue-demi_README.md"/>
+                        </toc-element>
+                    </toc-element>
+                </toc-element>
+                <toc-element toc-title="shared">
+                    <toc-element toc-title="node_modules">
+                        <toc-element toc-title="vue-demi">
+                            <toc-element topic="node_modules_vue-demi_README1.md"/>
+                        </toc-element>
+                    </toc-element>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="async-validator">
+                <toc-element topic="async-validator_README.md"/>
+                <toc-element topic="LICENSE.md"/>
+            </toc-element>
+            <toc-element toc-title="asynckit">
+                <toc-element topic="asynckit_README.md"/>
+            </toc-element>
+            <toc-element toc-title="axios">
+                <toc-element topic="SECURITY.md"/>
+                <toc-element topic="axios_README.md"/>
+                <toc-element topic="MIGRATION_GUIDE.md"/>
+                <toc-element topic="CHANGELOG.md"/>
+                <toc-element toc-title="lib">
+                    <toc-element toc-title="adapters">
+                        <toc-element topic="adapters_README.md"/>
+                    </toc-element>
+                    <toc-element toc-title="core">
+                        <toc-element topic="lib_core_README.md"/>
+                    </toc-element>
+                    <toc-element toc-title="env">
+                        <toc-element topic="env_README.md"/>
+                    </toc-element>
+                    <toc-element toc-title="helpers">
+                        <toc-element topic="helpers_README.md"/>
+                    </toc-element>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="combined-stream">
+                <toc-element topic="Readme.md"/>
+            </toc-element>
+            <toc-element toc-title="csstype">
+                <toc-element topic="csstype_README.md"/>
+            </toc-element>
+            <toc-element toc-title="dayjs">
+                <toc-element topic="dayjs_README.md"/>
+                <toc-element topic="dayjs_CHANGELOG.md"/>
+            </toc-element>
+            <toc-element toc-title="delayed-stream">
+                <toc-element topic="delayed-stream_Readme.md"/>
+            </toc-element>
+            <toc-element toc-title="element-plus">
+                <toc-element topic="element-plus_README.md"/>
+            </toc-element>
+            <toc-element toc-title="esbuild">
+                <toc-element topic="esbuild_README.md"/>
+                <toc-element topic="esbuild_LICENSE.md"/>
+            </toc-element>
+            <toc-element toc-title="escape-html">
+                <toc-element topic="escape-html_Readme.md"/>
+            </toc-element>
+            <toc-element toc-title="estree-walker">
+                <toc-element topic="estree-walker_README.md"/>
+                <toc-element topic="estree-walker_CHANGELOG.md"/>
+            </toc-element>
+            <toc-element toc-title="follow-redirects">
+                <toc-element topic="follow-redirects_README.md"/>
+            </toc-element>
+            <toc-element toc-title="form-data">
+                <toc-element topic="form-data_Readme.md"/>
+            </toc-element>
+            <toc-element toc-title="lodash">
+                <toc-element topic="lodash_release.md"/>
+                <toc-element topic="lodash_README.md"/>
+            </toc-element>
+            <toc-element toc-title="lodash-es">
+                <toc-element topic="release.md"/>
+                <toc-element topic="lodash-es_README.md"/>
+            </toc-element>
+            <toc-element toc-title="magic-string">
+                <toc-element topic="magic-string_README.md"/>
+            </toc-element>
+            <toc-element toc-title="memoize-one">
+                <toc-element topic="memoize-one_README.md"/>
+            </toc-element>
+            <toc-element toc-title="mime-db">
+                <toc-element topic="mime-db_README.md"/>
+                <toc-element topic="HISTORY.md"/>
+            </toc-element>
+            <toc-element toc-title="mime-types">
+                <toc-element topic="mime-types_README.md"/>
+                <toc-element topic="mime-types_HISTORY.md"/>
+            </toc-element>
+            <toc-element toc-title="nanoid">
+                <toc-element topic="nanoid_README.md"/>
+            </toc-element>
+            <toc-element toc-title="normalize-wheel-es">
+                <toc-element topic="normalize-wheel-es_README.md"/>
+            </toc-element>
+            <toc-element toc-title="picocolors">
+                <toc-element topic="picocolors_README.md"/>
+            </toc-element>
+            <toc-element toc-title="pinia">
+                <toc-element topic="pinia_README.md"/>
+                <toc-element toc-title="node_modules">
+                    <toc-element toc-title="vue-demi">
+                        <toc-element topic="vue-demi_README.md"/>
+                    </toc-element>
+                </toc-element>
+            </toc-element>
+            <toc-element toc-title="postcss">
+                <toc-element topic="postcss_README.md"/>
+            </toc-element>
+            <toc-element toc-title="proxy-from-env">
+                <toc-element topic="proxy-from-env_README.md"/>
+            </toc-element>
+            <toc-element toc-title="rollup">
+                <toc-element topic="rollup_README.md"/>
+                <toc-element topic="rollup_LICENSE.md"/>
+            </toc-element>
+            <toc-element toc-title="source-map-js">
+                <toc-element topic="source-map-js_README.md"/>
+                <toc-element topic="source-map-js_CHANGELOG.md"/>
+            </toc-element>
+            <toc-element toc-title="vite">
+                <toc-element topic="vite_README.md"/>
+                <toc-element topic="vite_LICENSE.md"/>
+            </toc-element>
+            <toc-element toc-title="vue">
+                <toc-element topic="vue_README.md"/>
+            </toc-element>
+            <toc-element toc-title="vue-axios">
+                <toc-element topic="vue-axios_README.md"/>
+            </toc-element>
+            <toc-element toc-title="vue-router">
+                <toc-element topic="vue-router_README.md"/>
+            </toc-element>
+        </toc-element>
+    </toc-element>
+</instance-profile>

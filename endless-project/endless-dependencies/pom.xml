@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.endless</groupId>
+    <artifactId>endless-dependencies</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>endless-dependencies</name>
+    <description>Endless Dependencies</description>
+    <url>https://github.com/org-endless/endless</url>
+    <organization>
+        <name>Endless, Org.</name>
+        <url>https://github.com/org-endless</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Endless</name>
+            <email>haozhi_deng@126.com</email>
+            <organization>Endless, Org.</organization>
+            <organizationUrl>https://github.com/org-endless</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/spring-projects/org-endless/endless.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/org-endless/endless.git</developerConnection>
+        <url>https://github.com/org-endless/endless</url>
+    </scm>
+
+    <properties>
+        <revision>0.0.4-SNAPSHOT</revision>
+        <!-- Maven -->
+        <java.version>20</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <!-- Dependencies version -->
+        <endless.version>0.0.4</endless.version>
+        <spring-boot.version>3.1.4</spring-boot.version>
+        <flowable.version>7.0.0</flowable.version>
+        <snakeyaml.version>2.2</snakeyaml.version>
+        <lombok.version>1.18.30</lombok.version>
+        <jsr305.version>3.0.2</jsr305.version>
+    </properties>
+
+    <dependencyManagement>
+        <!-- endless dependencies -->
+        <dependencies>
+            <dependency>
+                <groupId>org.endless</groupId>
+                <artifactId>flowable-mongo-spring-boot-starter</artifactId>
+                <version>${endless.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.endless</groupId>
+                <artifactId>huangce-spring-boot-starter</artifactId>
+                <version>${endless.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.endless</groupId>
+                <artifactId>nvwa-spring-boot-starter</artifactId>
+                <version>${endless.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.endless</groupId>
+                <artifactId>zhenghe-spring-boot-starter</artifactId>
+                <version>${endless.version}</version>
+            </dependency>
+            <!-- framework -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter-rest</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
+            <!-- tools -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+            <!-- Dev -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!-- Built -->
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>1.5.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
