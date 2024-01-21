@@ -25,7 +25,7 @@ public class ObjectToMongoObject {
             return Decimal.format(object);
 
         if (object instanceof Map<?, ?>) {
-            var map = keyToString((Map<?, ?>) object);
+            Map<String, Object> map = keyToString((Map<?, ?>) object);
             map.entrySet().forEach(entry -> entry.setValue(convert(entry.getValue())));
             return map;
         }

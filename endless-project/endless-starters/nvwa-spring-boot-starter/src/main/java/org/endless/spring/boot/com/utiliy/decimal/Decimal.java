@@ -1,6 +1,5 @@
 package org.endless.spring.boot.com.utiliy.decimal;
 
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Collections;
@@ -111,8 +110,8 @@ public class Decimal {
             return null;
         }
 
-        BigDecimal max = decimalList.get(0);
-        for (var decimal : decimalList) {
+        BigDecimal max = decimalList.getFirst();
+        for (BigDecimal decimal : decimalList) {
             max = max.max(decimal);
         }
 
@@ -125,8 +124,8 @@ public class Decimal {
             return null;
         }
 
-        BigDecimal min = decimalList.get(0);
-        for (var decimal : decimalList) {
+        BigDecimal min = decimalList.getFirst();
+        for (BigDecimal decimal : decimalList) {
             min = min.min(decimal);
         }
 
@@ -139,7 +138,7 @@ public class Decimal {
             return null;
         }
 
-        var sum = BigDecimal.ZERO;
+        BigDecimal sum = BigDecimal.ZERO;
         for (BigDecimal decimal : decimalList) {
             sum = add(sum, decimal);
         }

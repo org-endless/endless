@@ -1,3 +1,0 @@
-# Topic title
-
-TEST

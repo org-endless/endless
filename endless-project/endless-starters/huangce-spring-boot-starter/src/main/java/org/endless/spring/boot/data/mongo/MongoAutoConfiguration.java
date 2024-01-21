@@ -1,6 +1,8 @@
 package org.endless.spring.boot.data.mongo;
 
 import org.endless.spring.boot.data.mongo.bulk.MongoBulkConfiguration;
+import org.endless.spring.boot.data.mongo.mongo.MongoConfiguration;
+import org.endless.spring.boot.data.mongo.reactive.ReactiveMongoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Import;
 

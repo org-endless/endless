@@ -16,7 +16,7 @@ public class UrlFormatter {
         if (paraMap.isEmpty()) return null;
 
         StringBuilder paras = new StringBuilder("?");
-        for (var para : paraMap.entrySet())
+        for (Map.Entry<String, String> para : paraMap.entrySet())
             paras.append(para.getKey()).append("={").append(para.getKey()).append("}&");
 
         return paras.substring(0, paras.length() - 1);

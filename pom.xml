@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.endless</groupId>
     <artifactId>endless-build</artifactId>
-    <version>${revision}</version>
+    <version>0.0.6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>endless-build</name>
     <description>Endless Build</description>
@@ -35,17 +35,14 @@
     </scm>
 
     <properties>
-        <revision>0.0.4-SNAPSHOT</revision>
-        <main.basedir>${basedir}</main.basedir>
     </properties>
     <modules>
         <module>endless-project/endless-dependencies</module>
         <module>endless-project/endless-parent</module>
         <module>endless-project/endless-starters/flowable-mongo-spring-boot-starter</module>
-        <!--        <module>endless-project/endless-starters/huangce-spring-boot-starter</module>-->
+        <module>endless-project/endless-starters/huangce-spring-boot-starter</module>
         <module>endless-project/endless-starters/nvwa-spring-boot-starter</module>
         <!--        <module>endless-project/endless-starters/yulei-spring-boot-starter</module>-->
         <!--        <module>endless-project/endless-starters/zhenghe-spring-boot-starter</module>-->
-        <!--        <module>endless-project/fanli</module>-->
     </modules>
 </project>

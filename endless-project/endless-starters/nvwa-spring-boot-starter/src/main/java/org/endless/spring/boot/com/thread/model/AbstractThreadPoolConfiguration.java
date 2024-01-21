@@ -83,7 +83,7 @@ public abstract class AbstractThreadPoolConfiguration implements AsyncConfigurer
                         ? threadPoolProperties.getAwaitTerminationSeconds()
                         : AbstractThreadPoolProperties.DEFAULT_AWAIT_TERMINATION_SECONDS);
 
-        var rejectedExecutionHandler = threadPoolProperties.getRejectedExecutionHandler();
+        String rejectedExecutionHandler = threadPoolProperties.getRejectedExecutionHandler();
         if (StringUtils.hasLength(rejectedExecutionHandler)) {
 
             if ("AbortPolicy".equals(rejectedExecutionHandler))

@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <version>0.0.6-SNAPSHOT</version>
     <groupId>org.endless</groupId>
     <artifactId>endless-dependencies</artifactId>
-    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>endless-dependencies</name>
     <description>Endless Dependencies</description>
@@ -35,18 +35,17 @@
     </scm>
 
     <properties>
-        <revision>0.0.4-SNAPSHOT</revision>
         <!-- Maven -->
-        <java.version>20</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <java.version>21</java.version>
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+        <maven.compiler.encoding>${encoding}</maven.compiler.encoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.12.0</maven-compiler-plugin.version>
         <!-- Dependencies version -->
-        <endless.version>0.0.4</endless.version>
-        <spring-boot.version>3.1.4</spring-boot.version>
+        <spring-boot.version>3.2.1</spring-boot.version>
         <flowable.version>7.0.0</flowable.version>
         <snakeyaml.version>2.2</snakeyaml.version>
         <lombok.version>1.18.30</lombok.version>
@@ -59,22 +58,17 @@
             <dependency>
                 <groupId>org.endless</groupId>
                 <artifactId>flowable-mongo-spring-boot-starter</artifactId>
-                <version>${endless.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.endless</groupId>
                 <artifactId>huangce-spring-boot-starter</artifactId>
-                <version>${endless.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.endless</groupId>
                 <artifactId>nvwa-spring-boot-starter</artifactId>
-                <version>${endless.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.endless</groupId>
-                <artifactId>zhenghe-spring-boot-starter</artifactId>
-                <version>${endless.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <!-- framework -->
             <dependency>
@@ -83,11 +77,6 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.flowable</groupId>
-                <artifactId>flowable-spring-boot-starter</artifactId>
-                <version>${flowable.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.flowable</groupId>
@@ -121,16 +110,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${encoding}</encoding>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>flatten-maven-plugin</artifactId>
-                    <version>1.5.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>

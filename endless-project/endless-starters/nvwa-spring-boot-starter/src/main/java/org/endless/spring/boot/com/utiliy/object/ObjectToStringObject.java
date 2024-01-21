@@ -19,7 +19,7 @@ public class ObjectToStringObject {
             return String.valueOf(object).trim();
 
         if (object instanceof Map<?, ?>) {
-            var map = keyToString((Map<?, ?>) object);
+            Map<String, Object> map = keyToString((Map<?, ?>) object);
             map.entrySet().forEach(entry -> entry.setValue(convert(entry.getValue())));
             return map;
         }

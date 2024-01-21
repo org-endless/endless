@@ -4,11 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.endless</groupId>
     <artifactId>nvwa-spring-boot-starter</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>nvwa-spring-boot-starter</name>
     <description>Nvwa, goddess of creation in China.</description>
 
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+    </properties>
     <dependencies>
         <!-- Framework -->
         <dependency>
@@ -62,24 +70,26 @@
             <dependency>
                 <groupId>org.endless</groupId>
                 <artifactId>endless-dependencies</artifactId>
-                <version>0.0.4</version>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--                <configuration>-->
+    <!--                    <excludes>-->
+    <!--                        <exclude>-->
+    <!--                            <groupId>org.projectlombok</groupId>-->
+    <!--                            <artifactId>lombok</artifactId>-->
+    <!--                        </exclude>-->
+    <!--                    </excludes>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
 </project>
