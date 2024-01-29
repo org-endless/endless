@@ -39,7 +39,7 @@
     <modules>
         <module>endless-project/endless-dependencies</module>
         <module>endless-project/endless-parent</module>
-        <module>endless-project/endless-starters/flowable-mongo-spring-boot-starter</module>
+<!--        <module>endless-project/endless-starters/flowable-mongo-spring-boot-starter</module>-->
         <module>endless-project/endless-starters/huangce-spring-boot-starter</module>
         <module>endless-project/endless-starters/nvwa-spring-boot-starter</module>
         <!--        <module>endless-project/endless-starters/yulei-spring-boot-starter</module>-->
