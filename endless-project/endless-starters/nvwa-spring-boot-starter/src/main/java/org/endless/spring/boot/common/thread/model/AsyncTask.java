@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.thread.model;
+package org.endless.spring.boot.common.thread.model;
 
 import java.util.concurrent.CompletableFuture;
 

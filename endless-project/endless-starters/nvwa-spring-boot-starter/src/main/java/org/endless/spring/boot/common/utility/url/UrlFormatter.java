@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.utiliy.url;
+package org.endless.spring.boot.common.utility.url;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-// package org.endless.com.thread.task;
+// package org.endless.common.thread.task;
 //
 // import org.endless.erp.share.mongo.base.BaseMongoRepository;
 //

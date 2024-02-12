@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.utiliy.file;
+package org.endless.spring.boot.common.utility.file;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.io.FileSystemResource;

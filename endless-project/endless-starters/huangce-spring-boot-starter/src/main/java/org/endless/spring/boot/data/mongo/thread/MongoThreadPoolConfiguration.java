@@ -1,6 +1,6 @@
 package org.endless.spring.boot.data.mongo.thread;
 
-import org.endless.spring.boot.com.thread.model.AbstractThreadPoolConfiguration;
+import org.endless.spring.boot.common.thread.model.AbstractThreadPoolConfiguration;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

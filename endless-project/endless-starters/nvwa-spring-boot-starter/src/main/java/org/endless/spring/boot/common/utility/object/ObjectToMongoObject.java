@@ -1,6 +1,6 @@
-package org.endless.spring.boot.com.utiliy.object;
+package org.endless.spring.boot.common.utility.object;
 
-import org.endless.spring.boot.com.utiliy.decimal.Decimal;
+import org.endless.spring.boot.common.utility.decimal.Decimal;
 
 import java.math.BigDecimal;
 import java.util.Date;

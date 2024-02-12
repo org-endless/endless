@@ -1,6 +1,6 @@
 package org.endless.spring.boot.data.mongo.thread;
 
-import org.endless.spring.boot.com.thread.model.AbstractThreadPoolProperties;
+import org.endless.spring.boot.common.thread.model.AbstractThreadPoolProperties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

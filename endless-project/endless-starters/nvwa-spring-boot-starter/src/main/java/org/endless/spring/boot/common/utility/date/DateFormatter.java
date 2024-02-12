@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.utiliy.date;
+package org.endless.spring.boot.common.utility.date;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;

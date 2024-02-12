@@ -1,4 +1,4 @@
-// package org.endless.com.thread.task;
+// package org.endless.common.thread.task;
 //
 // import jakarta.validation.constraints.NotEmpty;
 // import jakarta.validation.constraints.Pattern;

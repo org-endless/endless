@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.utiliy.list;
+package org.endless.spring.boot.common.utility.list;
 
 import java.util.ArrayList;
 import java.util.Collections;

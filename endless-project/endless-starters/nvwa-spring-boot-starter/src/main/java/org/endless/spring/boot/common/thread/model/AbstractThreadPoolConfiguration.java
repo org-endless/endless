@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.thread.model;
+package org.endless.spring.boot.common.thread.model;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
@@ -26,11 +26,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Slf4j
 public abstract class AbstractThreadPoolConfiguration implements AsyncConfigurer {
 
-    private final ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+    private final ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
     private final AbstractThreadPoolProperties threadPoolProperties;
 
-    public AbstractThreadPoolConfiguration(AbstractThreadPoolProperties threadPoolProperties) {
+    protected AbstractThreadPoolConfiguration(ThreadPoolTaskExecutor threadPoolTaskExecutor, AbstractThreadPoolProperties threadPoolProperties) {
+        this.threadPoolTaskExecutor = threadPoolTaskExecutor;
         this.threadPoolProperties = threadPoolProperties;
     }
 
@@ -83,6 +84,26 @@ public abstract class AbstractThreadPoolConfiguration implements AsyncConfigurer
                         ? threadPoolProperties.getAwaitTerminationSeconds()
                         : AbstractThreadPoolProperties.DEFAULT_AWAIT_TERMINATION_SECONDS);
 
+        return setRejectedExecutionHandler(threadPoolTaskExecutor);
+    }
+
+    /**
+     * 异步线程异常捕获
+     * <p>Asynchronous thread exception catch
+     *
+     * @return org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler
+     */
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        return (throwable, method, objects) -> {
+            log.trace(String.valueOf(method.getDeclaringClass()));
+            Arrays.stream(objects).map(object -> "The parameter is: " + object).forEach(log::trace);
+            log.error(throwable.getMessage());
+        };
+    }
+
+    private ThreadPoolTaskExecutor setRejectedExecutionHandler(ThreadPoolTaskExecutor threadPoolTaskExecutor) {
+
         String rejectedExecutionHandler = threadPoolProperties.getRejectedExecutionHandler();
         if (StringUtils.hasLength(rejectedExecutionHandler)) {
 
@@ -102,21 +123,6 @@ public abstract class AbstractThreadPoolConfiguration implements AsyncConfigurer
             threadPoolTaskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
         }
         return threadPoolTaskExecutor;
-    }
-
-    /**
-     * 异步线程异常捕获
-     * <p>Asynchronous thread exception catch
-     *
-     * @return org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler
-     */
-    @Override
-    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return (throwable, method, objects) -> {
-            log.trace(String.valueOf(method.getDeclaringClass()));
-            Arrays.stream(objects).map(object -> "The parameter is: " + object).forEach(log::trace);
-            log.error(throwable.getMessage());
-        };
     }
 
     public Integer getCorePoolSize() {

@@ -1,7 +1,7 @@
 package org.endless.spring.boot.data.mongo.bulk;
 
 import lombok.extern.slf4j.Slf4j;
-import org.endless.spring.boot.com.utiliy.list.ListSplitter;
+import org.endless.spring.boot.common.utility.list.ListSplitter;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.util.Pair;

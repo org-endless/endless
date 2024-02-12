@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.utiliy.object;
+package org.endless.spring.boot.common.utility.object;
 
 /**
  * FatherToChild

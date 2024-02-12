@@ -1,6 +1,7 @@
-package org.endless.spring.boot.com.thread.model;
+package org.endless.spring.boot.common.thread.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * AbstractThreadPoolProperties
@@ -13,7 +14,8 @@ import lombok.Data;
  * @author Deng Haozhi
  * @since 0.0.2
  */
-@Data
+@Getter
+@Setter
 public abstract class AbstractThreadPoolProperties {
 
     /*

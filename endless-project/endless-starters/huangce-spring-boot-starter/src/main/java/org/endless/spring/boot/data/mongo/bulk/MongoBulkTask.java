@@ -1,6 +1,6 @@
 package org.endless.spring.boot.data.mongo.bulk;
 
-import org.endless.spring.boot.com.thread.model.AsyncTask;
+import org.endless.spring.boot.common.thread.model.AsyncTask;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.util.Pair;

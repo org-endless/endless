@@ -1,4 +1,4 @@
-package org.endless.spring.boot.com.utiliy.decimal;
+package org.endless.spring.boot.common.utility.decimal;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -1,8 +1,8 @@
-package org.endless.spring.boot.com.thread;
+package org.endless.spring.boot.common.thread;
 
-import org.endless.spring.boot.com.thread.simple.SimpleThreadPoolConfiguration;
+// import org.endless.spring.boot.common.thread.simple.SimpleThreadPoolConfiguration;
+
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
 
 /**
  * ThreadAutoConfiguration
@@ -16,6 +16,6 @@ import org.springframework.context.annotation.Import;
  * @since 0.1.1
  */
 @AutoConfiguration
-@Import({SimpleThreadPoolConfiguration.class})
+// @Import({SimpleThreadPoolConfiguration.class})
 public class ThreadAutoConfiguration {
 }
